@@ -1,0 +1,54 @@
+extends CharacterBody2D
+
+signal break_wall(pos: Vector2i)
+
+const SPEED = 200.0
+const ACCELERATION = 0.2
+const FRICTION = 0.25
+
+@export var _player_actions: Array[String]
+
+@onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _marker: Sprite2D = $Marker
+
+
+func _physics_process(delta: float) -> void:
+	var direction := Input.get_vector(_player_actions[0], _player_actions[1], _player_actions[2], _player_actions[3]).normalized()
+	if direction:
+		velocity = velocity.lerp(direction.normalized() * SPEED, ACCELERATION)
+		_animate(direction.normalized())
+		_set_marker_pos(direction)
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, FRICTION)
+	
+	if Input.is_action_just_pressed(_player_actions[4]):
+		break_wall.emit((_marker.global_position - Vector2.ONE * 16)/32)
+	
+	_animated_sprite_2d.speed_scale = clamp(velocity.length(), 0, 1)
+	
+	move_and_slide()
+
+
+func _set_marker_pos(dir: Vector2) -> void:
+	var marker_dir: Vector2i
+	
+	if abs(dir.x) > abs(dir.y):
+		marker_dir = Vector2(1, 0) if dir.x > 0 else Vector2(-1, 0)
+	else:
+		marker_dir = Vector2(0, 1) if dir.y > 0 else Vector2(0, -1)
+	
+	_marker.global_position = (Vector2i(global_position) / 32) * 32 + Vector2i.ONE * 16 + marker_dir * 32
+
+
+func _animate(dir: Vector2) -> void:
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			_animated_sprite_2d.animation = "right"
+		else:
+			_animated_sprite_2d.animation = "left"
+	else:
+		if velocity.y > 0:
+			_animated_sprite_2d.animation = "down"
+		else:
+			_animated_sprite_2d.animation = "up" 
+		
