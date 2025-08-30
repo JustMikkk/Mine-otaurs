@@ -60,6 +60,6 @@ func load_shader(rd:RenderingDevice,path:String):
 	var shader:RID=rd.shader_create_from_spirv(shader_spirv)
 	if shader_spirv.compile_error_compute!="":
 		printerr(path)
-		print(shader_spirv.compile_error_compute)
+		#print(shader_spirv.compile_error_compute)
 		assert(false)
 	return shader

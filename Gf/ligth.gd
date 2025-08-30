@@ -195,8 +195,8 @@ func reaload_li():
 		a.append(clamp(l.global_position.y/maze_scale_down,0.0,maze_size_y-1))
 		
 	rd.buffer_update(li_point[0][0],0,4*a.size(),a.to_byte_array())
-	print("reLOAD")
-	print(a)
+	#print("reLOAD")
+	#print(a)
 
 
 func _process(delta: float) -> void:
@@ -290,7 +290,7 @@ func _process(delta: float) -> void:
 		rd.compute_list_bind_compute_pipeline(compute_list,pipeline_ray)
 		rd.compute_list_dispatch(compute_list,20,1+lights.size(),1)
 		rd.compute_list_add_barrier(compute_list)
-		print(1+lights.size())
+		#print(1+lights.size())
 		
 	
 		

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal break_wall(pos: Vector2i)
 
-const SPEED = 400.0
+const SPEED = 300.0
 const ACCELERATION = 0.2
 const FRICTION = 0.25
 
@@ -20,11 +20,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var ligth=$"..".get_sensor_data(ligth_id)
 	#print(ligth)
-	if ligth>8:
+	if ligth>-8:
 		$AnimatedSprite2D.modulate=Color(0.9,0.9,0.9)
 	else:
 		$AnimatedSprite2D.modulate=Color(0.1,0.1,0.9)
-	if ligth>8:
+	if ligth>-8:
 		var direction := Input.get_vector(_player_actions[0], _player_actions[1], _player_actions[2], _player_actions[3]).normalized()
 		if direction:
 			velocity = velocity.lerp(direction.normalized() * SPEED, ACCELERATION)
@@ -55,12 +55,12 @@ func _set_marker_pos(dir: Vector2) -> void:
 func _animate(dir: Vector2) -> void:
 	if abs(velocity.x) > abs(velocity.y):
 		if velocity.x > 0:
-			_animated_sprite_2d.animation = "right"
+			_animated_sprite_2d.animation = "move_right"
 		else:
-			_animated_sprite_2d.animation = "left"
+			_animated_sprite_2d.animation = "move_left"
 	else:
 		if velocity.y > 0:
-			_animated_sprite_2d.animation = "down"
+			_animated_sprite_2d.animation = "move_down"
 		else:
-			_animated_sprite_2d.animation = "up" 
+			_animated_sprite_2d.animation = "move_up" 
 		

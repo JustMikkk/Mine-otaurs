@@ -440,5 +440,4 @@ frame_progress = 0.499414
 
 [node name="Marker" type="Sprite2D" parent="."]
 position = Vector2(128, 0)
-scale = Vector2(4, 4)
 texture = ExtResource("98_i6ap2")

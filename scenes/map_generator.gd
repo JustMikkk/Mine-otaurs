@@ -1,6 +1,8 @@
 class_name MapGenerator
 extends Node
 
+const SAVABLE_PERSON = preload("res://scenes/entity/savable_person.tscn")
+
 enum Tile {
 	EMPTY,
 	WALL,

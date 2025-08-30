@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://drtrate6txvwq"]
+[gd_scene load_steps=19 format=4 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://deqr4vdkjoc3l" path="res://scenes/map_generator.gd" id="6_2r41h"]
 [ext_resource type="Script" uid="uid://bauxuuqud2jtv" path="res://Gf/ligth.gd" id="7_klq6b"]
 [ext_resource type="Script" uid="uid://ykqaxddacfa7" path="res://Global/graphic.gd" id="8_b121j"]
+[ext_resource type="PackedScene" uid="uid://bmjffm6nn0g4n" path="res://scenes/player/mino_torch.tscn" id="9_fpun6"]
 [ext_resource type="Texture2D" uid="uid://cqt4edu5wt2qp" path="res://icon.svg" id="9_olg7q"]
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="10_8iemx"]
 [ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="10_t1rx8"]
@@ -114,12 +115,12 @@ script = ExtResource("4_t1rx8")
 [node name="MainCamera" parent="Level_maker" node_paths=PackedStringArray("_player1", "_player2") instance=ExtResource("4_ppgk2")]
 visible = false
 position = Vector2(2216, 1329)
-zoom = Vector2(0.5, 0.5)
 _player1 = NodePath("../../ligth/P1")
 _player2 = NodePath("../../ligth/P2")
 
 [node name="MapGenerator" type="Node" parent="Level_maker"]
 script = ExtResource("6_2r41h")
+map_size = Vector2i(50, 50)
 
 [node name="ligth" type="Node" parent="." node_paths=PackedStringArray("trect")]
 script = ExtResource("7_klq6b")
@@ -128,7 +129,18 @@ trect = NodePath("../TextureRect")
 [node name="Graphic" type="Node" parent="ligth"]
 script = ExtResource("8_b121j")
 
+[node name="MinoTorch" parent="ligth" instance=ExtResource("9_fpun6")]
+position = Vector2(1444, 1461)
+
+[node name="Circle3" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li")]
+position = Vector2(2456, 1498)
+scale = Vector2(8, 8)
+texture = ExtResource("10_8iemx")
+script = ExtResource("11_64w2a")
+li = NodePath("../..")
+
 [node name="P1" parent="ligth" instance=ExtResource("3_w8frs")]
+visible = false
 position = Vector2(2216, 1329)
 _player_actions = Array[String](["left_p1", "right_p1", "up_p1", "down_p1", "action_p1"])
 
@@ -136,13 +148,6 @@ _player_actions = Array[String](["left_p1", "right_p1", "up_p1", "down_p1", "act
 modulate = Color(0.551567, 1, 0.745948, 1)
 position = Vector2(2461, 1478)
 _player_actions = Array[String](["left_p2", "right_p2", "up_p2", "down_p2", "action_p2"])
-
-[node name="Circle3" type="Sprite2D" parent="ligth/P2" node_paths=PackedStringArray("li")]
-position = Vector2(-5, 20)
-scale = Vector2(8, 8)
-texture = ExtResource("10_8iemx")
-script = ExtResource("11_64w2a")
-li = NodePath("../..")
 
 [node name="Circle" type="Sprite2D" parent="ligth" node_paths=PackedStringArray("li")]
 position = Vector2(1913, 2392)
