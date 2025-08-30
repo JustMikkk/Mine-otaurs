@@ -42,10 +42,16 @@ vec3 get_color(ivec2 pid){
 
     vec3 rgb=vec3(0.0);
     
-    int ligth_int = ligth_buffer.data[ligth_size_y*(pid.x/light_scale_down)+(pid.y/light_scale_down)];
+    int ligth_int2 = ligth_buffer.data[ligth_size_y*(pid.x/light_scale_down)+(pid.y/light_scale_down)];
+    int step=99-(ligth_int2%100);
+    int ligth_int=ligth_int2/100;
         float ligth = float(ligth_int%100);
     if(ligth_int>100){
-        rgb = vec3(1.0f,1.0f,1.0f);
+        rgb = vec3(0.8f,1.0f,0.0f);
+        if(step<40){
+            rgb = vec3(1.0f,1.0f,1.0f-step*0.025);
+        }
+        
     }
     else{
     if(ligth==10.0){

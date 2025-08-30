@@ -45,10 +45,10 @@ void main() {
     int new=100;
     for(int step=0;step<200;step++){
         vec2 npos=pos+vel;
-        ivec2 inposA=ivec2(floor(npos+vec2(0.0,-0.01)));
-        ivec2 inposB=ivec2(floor(npos+vec2(0.0,+0.01)));
-        ivec2 inposC=ivec2(floor(npos+vec2(-0.01,0.0)));
-        ivec2 inposD=ivec2(floor(npos+vec2(+0.01,0.0)));
+        ivec2 inposA=ivec2(floor(npos+vec2(0.0,-0.1)));
+        ivec2 inposB=ivec2(floor(npos+vec2(0.0,+0.1)));
+        ivec2 inposC=ivec2(floor(npos+vec2(-0.1,0.0)));
+        ivec2 inposD=ivec2(floor(npos+vec2(+0.1,0.0)));
         ivec2 inpos2=ivec2(floor(npos*5.0));
         //atomicAdd(ligth_buffer.data[ipos2.x*50+ipos2.y],live);
         if(step==100){
@@ -57,7 +57,7 @@ void main() {
         if ((maze_buffer.data[inposA.x*maze_size_y+inposA.y]==1)&&
         (maze_buffer.data[inposC.x*maze_size_y+inposC.y]==1)&&
         (maze_buffer.data[inposD.x*maze_size_y+inposD.y]==1)&&
-        (maze_buffer.data[inposB.x*maze_size_y+inposB.y]==1)&&(step>10)){
+        (maze_buffer.data[inposB.x*maze_size_y+inposB.y]==1)&&(step>1)){
             live-=1;
             if(live>0){
                 if(floor(pos.x)!=floor(npos.x)){
@@ -75,7 +75,7 @@ void main() {
             }
         }
         else{
-            atomicMax(ligth_buffer.data[inpos2.x*ligth_size_y+inpos2.y],live+new);
+            atomicMax(ligth_buffer.data[inpos2.x*ligth_size_y+inpos2.y],(live+new)*100+min(99,99-step));
             pos=npos;
         }
     }
