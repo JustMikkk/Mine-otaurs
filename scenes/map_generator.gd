@@ -44,32 +44,44 @@ func generate_maze() -> void:
 		filling_index = filling_index + 1 if filling_index + 1 != 4 else 0
 		
 	#_print_map()
+	_fill_with_obstacles()
+
 	_apply_to_tilemap()
 	_update_all_tiles()
+	_update_nav_tiles()
 
 
 func mine_tile(cords: Vector2i) -> bool:
 	if _map[cords.y][cords.x] == Tile.WALL:
 		_map[cords.y][cords.x] = Tile.EMPTY
 		_walls_tile_map.erase_cell(cords)
+		_set_bg_tilemap_tile(cords, Vector2i(randi_range(1, 3), randi_range(2, 6)))
 		_update_surrounding_tiles(cords)
 		return true
 	return false
+
+
+func _update_nav_tiles() -> void:
+	for y in map_size.y:
+		for x in map_size.x:
+			if _map[y][x] == Tile.EMPTY:
+				_set_bg_tilemap_tile(Vector2i(x, y), Vector2i(randi_range(1, 3), randi_range(2, 6)))
 
 
 func _update_surrounding_tiles(cords: Vector2i) -> void:
 	for y in range(cords.y -1, cords.y -1 + 3, 1):
 		for x in range(cords.x -1, cords.x -1 + 3, 1):
 			if _is_tile_wall(x, y):
-				#if _walls_tile_map.get_cell_atlas_coords(Vector2i(x, y))
-				_set_tilemap_tile(Vector2i(x, y), TilesConfig.get_coresponding_tile(_get_surrounding_info(x, y)))
+				#if _walls_tile_map.get_cell_atlas_coords(Vector2i(x, y)):
+				_set_walls_tilemap_tile(Vector2i(x, y), TilesConfig.get_coresponding_tile(_get_surrounding_info(x, y)))
 
 
 func _update_all_tiles() -> void:
 	for y in map_size.y:
 		for x in map_size.x:
 			if _is_tile_wall(x, y):
-				_set_tilemap_tile(Vector2i(x, y), TilesConfig.get_coresponding_tile(_get_surrounding_info(x, y)))
+				_set_walls_tilemap_tile(Vector2i(x, y), TilesConfig.get_coresponding_tile(_get_surrounding_info(x, y)))
+				_set_walls_tilemap_tile
 
 
 func _get_surrounding_info(x: int, y: int) -> Array[bool]:
@@ -84,13 +96,32 @@ func _apply_to_tilemap() -> void:
 	for y in map_size.y:
 		for x in map_size.x:
 			if _map[y][x] == Tile.OBSIDIAN:
-				_set_tilemap_tile(Vector2i(x, y), TilesConfig.WALL_OBSIDIAN)
+				_set_walls_tilemap_tile(Vector2i(x, y), TilesConfig.WALL_OBSIDIAN)
 			if _map[y][x] == Tile.WALL:
-				_set_tilemap_tile(Vector2i(x, y), TilesConfig.WALL_DEFAULT)
+				_set_walls_tilemap_tile(Vector2i(x, y), TilesConfig.WALL_DEFAULT)
 
 
-func _set_tilemap_tile(cords: Vector2i, new_tile: Vector2i) -> void:
+func _fill_with_obstacles() -> void:
+	for y in map_size.y:
+		for x in map_size.x:
+			if _get_surrounding_info(x, y) == [false, false, true, false, false]:
+				var new_dir = Vector2i(1, 0)
+				
+				match randi_range(0, 3):
+					0: new_dir = Vector2i(-1, 0)
+					1: new_dir = Vector2i(1, 0)
+					2: new_dir = Vector2i(0, -1)
+					3: new_dir = Vector2i(0, 1)
+				
+				_map[y + new_dir.y][x + new_dir.x] = Tile.WALL
+
+
+func _set_walls_tilemap_tile(cords: Vector2i, new_tile: Vector2i) -> void:
 	_walls_tile_map.set_cell(cords, 0, new_tile)
+
+
+func _set_bg_tilemap_tile(cords: Vector2i, new_tile: Vector2i) -> void:
+	_bg_tile_map.set_cell(cords, 1, new_tile)
 
 
 func _fill_tiles_top_left() -> void:
@@ -198,7 +229,7 @@ func _fill_with_walls() -> void:
 func _fill_bg_tileset() -> void:
 	for y in map_size.y:
 		for x in map_size.x:
-			_bg_tile_map.set_cell(Vector2i(x, y), 1, Vector2i(randi_range(1, 3), randi_range(0, 6)))
+			_set_bg_tilemap_tile(Vector2i(x, y), TilesConfig.BG_BLOCKING)
 
 
 func _print_map() -> void:
