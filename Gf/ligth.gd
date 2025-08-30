@@ -180,6 +180,7 @@ func init_gpu():
 	pipeline_sen = rd.compute_pipeline_create(shader_sen)
 
 func _ready() -> void:
+	Tsize=128*($"../Level_maker/MapGenerator".map_size+Vector2i(1,1))
 	make_tab()
 	init_gpu()
 	

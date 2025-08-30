@@ -100,8 +100,8 @@
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="98_i6ap2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6ap2"]
-radius = 32.0
-height = 96.0
+radius = 20.0
+height = 76.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1rx8"]
 animations = [{
