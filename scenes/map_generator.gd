@@ -102,15 +102,18 @@ func _apply_to_tilemap() -> void:
 
 
 func _fill_with_obstacles() -> void:
-	var counter: int = 0
-	
-	while counter < 40:
-		var random_pos := Vector2i(randi_range(map_size.x / 2 - 10, map_size.x / 2 + 10), 
-		randi_range(map_size.y / 2 - 10, map_size.x / 2 + 10))
-		
-		if _map[random_pos.y][random_pos.x] == Tile.EMPTY:
-			_map[random_pos.y][random_pos.x] = Tile.WALL
-			counter += 1
+	for y in map_size.y:
+		for x in map_size.x:
+			if _get_surrounding_info(x, y) == [false, false, true, false, false]:
+				var new_dir = Vector2i(1, 0)
+				
+				match randi_range(0, 3):
+					0: new_dir = Vector2i(-1, 0)
+					1: new_dir = Vector2i(1, 0)
+					2: new_dir = Vector2i(0, -1)
+					3: new_dir = Vector2i(0, 1)
+				
+				_map[y + new_dir.y][x + new_dir.x] = Tile.WALL
 
 
 func _set_walls_tilemap_tile(cords: Vector2i, new_tile: Vector2i) -> void:
