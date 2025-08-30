@@ -25,6 +25,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
 
+[global_group]
+
+Players=""
+
 [input]
 
 left_p1={
@@ -83,6 +87,7 @@ action_p2={
 2d_physics/layer_1="Players"
 2d_physics/layer_2="Walls"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Savable"
 
 [network]
 
