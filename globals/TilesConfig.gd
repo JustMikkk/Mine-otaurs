@@ -1,6 +1,8 @@
 extends Node
 
 
+const BG_BLOCKING = Vector2i(0, 0)
+
 const WALL_DEFAULT = Vector2(1, 1)
 const WALL_OBSIDIAN = Vector2i(0, 6)
 
