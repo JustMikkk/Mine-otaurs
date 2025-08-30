@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://1jqqh2grlgh2"]
+
+[sub_resource type="Shader" id="Shader_nxiqb"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+void fragment(){
+	COLOR=vec4(0.0,1.0,0.5,1.0);
+	if((UV.x-0.5)*(UV.y-0.5)<0.0025*sin(TIME*2.0)){
+		COLOR+=vec4(0.0,0.0,0.5,0.0)*sin(TIME*2.1);
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sy5k4"]
+shader = SubResource("Shader_nxiqb")
+
+[node name="Node" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_sy5k4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

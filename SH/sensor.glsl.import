@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bo143li1yfv1c"
+path="res://.godot/imported/sensor.glsl-82eda53ada3eabde02ddb48aad5dd13e.res"
+
+[deps]
+
+source_file="res://SH/sensor.glsl"
+dest_files=["res://.godot/imported/sensor.glsl-82eda53ada3eabde02ddb48aad5dd13e.res"]
+
+[params]
+

@@ -12,22 +12,29 @@ const FRICTION = 0.25
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _marker: Sprite2D = $Marker
 
+var ligth_id
+
+func _ready() -> void:
+	ligth_id=$"..".register_sensor(self)
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_vector(_player_actions[0], _player_actions[1], _player_actions[2], _player_actions[3]).normalized()
-	if direction:
-		velocity = velocity.lerp(direction.normalized() * SPEED, ACCELERATION)
-		_animate(direction.normalized())
-		_set_marker_pos(direction)
-	else:
-		velocity = velocity.lerp(Vector2.ZERO, FRICTION)
-	
-	if Input.is_action_just_pressed(_player_actions[4]):
-		break_wall.emit(_marker.global_position)
-	
-	_animated_sprite_2d.speed_scale = clamp(velocity.length(), 0, 1)
-	
-	move_and_slide()
+	var ligth=$"..".get_sensor_data(ligth_id)
+	print(ligth)
+	if ligth>8:
+		var direction := Input.get_vector(_player_actions[0], _player_actions[1], _player_actions[2], _player_actions[3]).normalized()
+		if direction:
+			velocity = velocity.lerp(direction.normalized() * SPEED, ACCELERATION)
+			_animate(direction.normalized())
+			_set_marker_pos(direction)
+		else:
+			velocity = velocity.lerp(Vector2.ZERO, FRICTION)
+		
+		if Input.is_action_just_pressed(_player_actions[4]):
+			break_wall.emit(_marker.global_position)
+		
+		_animated_sprite_2d.speed_scale = clamp(velocity.length(), 0, 1)
+		
+		move_and_slide()
 
 
 func _set_marker_pos(dir: Vector2) -> void:

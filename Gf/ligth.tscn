@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmgxlly8ridte"]
+
+[ext_resource type="Script" uid="uid://bauxuuqud2jtv" path="res://Gf/ligth.gd" id="1_7w4w7"]
+[ext_resource type="Script" uid="uid://ykqaxddacfa7" path="res://Global/graphic.gd" id="2_xs3b5"]
+[ext_resource type="Script" uid="uid://chdstbgb62stv" path="res://Gf/label.gd" id="3_s6fd7"]
+[ext_resource type="Texture2D" uid="uid://c7pstxfayvo8o" path="res://icon.svg" id="4_c8ab4"]
+[ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="5_41i4v"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_gj14c"]
+
+[node name="Ligth" type="Node"]
+script = ExtResource("1_7w4w7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 591.0
+offset_bottom = 494.0
+texture = SubResource("Texture2DRD_gj14c")
+stretch_mode = 2
+
+[node name="Graphic" type="Node" parent="."]
+script = ExtResource("2_xs3b5")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -47.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "aaaaa"
+script = ExtResource("3_s6fd7")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.208207, 0.223416, 0.257085, 1)
+position = Vector2(37.5, 37.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_c8ab4")
+script = ExtResource("5_41i4v")
