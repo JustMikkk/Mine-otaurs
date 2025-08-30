@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://drtrate6txvwq"]
+[gd_scene load_steps=20 format=4 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
 [ext_resource type="TileSet" uid="uid://ctrvhns6s4m8j" path="res://tilesets/walls.tres" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://bplvnooaqa5eg" path="res://scenes/player/player.tscn" id="3_w8frs"]
 [ext_resource type="PackedScene" uid="uid://cmj3okni4pm7" path="res://scenes/main_camera.tscn" id="4_ppgk2"]
-[ext_resource type="Script" uid="uid://cop3vhisnv425" path="res://scenes/walls_tile_map.gd" id="4_t1rx8"]
+[ext_resource type="Script" path="res://scenes/walls_tile_map.gd" id="4_t1rx8"]
 [ext_resource type="Script" uid="uid://deqr4vdkjoc3l" path="res://scenes/map_generator.gd" id="6_2r41h"]
 [ext_resource type="Script" uid="uid://chdstbgb62stv" path="res://Gf/label.gd" id="6_fpun6"]
 [ext_resource type="Script" uid="uid://bauxuuqud2jtv" path="res://Gf/ligth.gd" id="7_klq6b"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqt4edu5wt2qp" path="res://icon.svg" id="9_olg7q"]
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="10_8iemx"]
 [ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="10_t1rx8"]
-[ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="11_64w2a"]
+[ext_resource type="Script" path="res://scenes/my_ligth.gd" id="11_64w2a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2r41h"]
 texture = ExtResource("2_ppgk2")
@@ -110,12 +110,14 @@ script = ExtResource("1_mx8sn")
 
 [node name="Walls-TileMap" type="TileMapLayer" parent="Level_maker"]
 visible = false
+modulate = Color(0.393086, 0.393086, 0.393085, 1)
 tile_set = ExtResource("3_mx8sn")
 script = ExtResource("4_t1rx8")
 
 [node name="MainCamera" parent="Level_maker" node_paths=PackedStringArray("_player1", "_player2") instance=ExtResource("4_ppgk2")]
 position = Vector2(2216, 1329)
-_player1 = NodePath("../../ligth/P1")
+zoom = Vector2(0.5, 0.5)
+_player1 = NodePath("../../ligth/MinoTorch")
 _player2 = NodePath("../../ligth/P2")
 
 [node name="Label" type="Label" parent="Level_maker/MainCamera"]
@@ -149,16 +151,11 @@ script = ExtResource("8_b121j")
 position = Vector2(1444, 1461)
 
 [node name="Circle3" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li")]
-position = Vector2(2456, 1498)
+position = Vector2(0, 14)
 scale = Vector2(8, 8)
 texture = ExtResource("10_8iemx")
 script = ExtResource("11_64w2a")
 li = NodePath("../..")
-
-[node name="P1" parent="ligth" instance=ExtResource("3_w8frs")]
-visible = false
-position = Vector2(2216, 1329)
-_player_actions = Array[String](["left_p1", "right_p1", "up_p1", "down_p1", "action_p1"])
 
 [node name="P2" parent="ligth" instance=ExtResource("3_w8frs")]
 modulate = Color(0.551567, 1, 0.745948, 1)

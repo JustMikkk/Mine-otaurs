@@ -8,7 +8,7 @@ var _source_id: int = 999
 @onready var _walls_tile_map: TileMapLayer = $"Walls-TileMap"
 @onready var _map_generator: MapGenerator = $MapGenerator
 
-@onready var _player_1: Player = $"../ligth/P1"
+@onready var _player_1: Player = $"../ligth/P2"
 @onready var _player_2: Player = $"../ligth/MinoTorch"
 
 
