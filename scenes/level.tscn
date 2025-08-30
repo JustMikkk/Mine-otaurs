@@ -155,7 +155,7 @@ position = Vector2(2461, 1478)
 _player_actions = Array[String](["left_p2", "right_p2", "up_p2", "down_p2", "action_p2"])
 
 [node name="Circle3" type="Sprite2D" parent="ligth/P2" node_paths=PackedStringArray("li")]
-position = Vector2(-5, 20)
+position = Vector2(39, 49)
 scale = Vector2(8, 8)
 texture = ExtResource("10_8iemx")
 script = ExtResource("11_64w2a")
