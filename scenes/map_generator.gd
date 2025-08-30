@@ -7,7 +7,7 @@ enum Tile {
 	OBSIDIAN
 }
 
-@export var _map_size: Vector2i = Vector2i(25, 25)
+@export var map_size: Vector2i = Vector2i(25, 25)
 @export var _obsidian_amount: int = 3
 
 var _map: Array[Array]
@@ -15,7 +15,7 @@ var _random_bound = 1
 var _empty_tiles = 9
 
 @onready var _walls_tile_map: TileMapLayer = $"../Walls-TileMap"
-@onready var _empty_tiles_goal = _map_size.x * _map_size.y / 5
+@onready var _empty_tiles_goal = map_size.x * map_size.y / 5
 
 
 func generate_maze() -> void:
@@ -41,27 +41,35 @@ func generate_maze() -> void:
 		
 		filling_index = filling_index + 1 if filling_index + 1 != 4 else 0
 		
-	
-	_fill_tiles_top_left()
-	_fill_tiles_top_right()
-	_fill_tiles_bottom_left()
-	_fill_tiles_bottom_right()
-	
-	_print_map()
+	#_print_map()
+	_apply_to_tilemap()
 
+
+#func _update_all_tiles() -> void:
+	
+
+
+
+func _apply_to_tilemap() -> void:
+	for y in map_size.y:
+		for x in map_size.x:
+			if _map[y][x] == Tile.OBSIDIAN:
+				_walls_tile_map.set_cell(Vector2i(x, y), 0, TilesConfig.WALL_OBSIDIAN)
+			if _map[y][x] == Tile.WALL:
+				_walls_tile_map.set_cell(Vector2i(x, y), 0, TilesConfig.WALL_DEFAULT)
 
 
 func _fill_tiles_top_left() -> void:
-	_fill_tiles(0, _map_size.x, 0, _map_size.y, 1, 1)
+	_fill_tiles(0, map_size.x, 0, map_size.y, 1, 1)
 
 func _fill_tiles_top_right() -> void:
-	_fill_tiles(_map_size.x -1, -1, 0, _map_size.y, -1, 1)
+	_fill_tiles(map_size.x -1, -1, 0, map_size.y, -1, 1)
 
 func _fill_tiles_bottom_left() -> void:
-	_fill_tiles(0, _map_size.x, _map_size.y -1, -1, 1, -1)
+	_fill_tiles(0, map_size.x, map_size.y -1, -1, 1, -1)
 
 func _fill_tiles_bottom_right() -> void:
-	_fill_tiles(_map_size.x -1, -1, _map_size.y, -1, -1, -1)
+	_fill_tiles(map_size.x -1, -1, map_size.y, -1, -1, -1)
 
 
 func _fill_tiles(start_x: int, end_x: int, start_y: int, end_y: int, step_x: int, step_y: int) -> void:
@@ -114,8 +122,8 @@ func _is_wall_right(x: int, y: int) -> bool:
 
 
 func _is_tile_wall(x: int, y: int) -> bool:
-	if x < 0 or x >= _map_size.x: return false
-	if y < 0 or y >= _map_size.y: return false
+	if x < 0 or x >= map_size.x: return false
+	if y < 0 or y >= map_size.y: return false
 	
 	return _map[y][x] == Tile.WALL
 
@@ -124,13 +132,13 @@ func _is_tile_obsidian(x: int, y: int) -> bool:
 	return _map[y][x] == Tile.OBSIDIAN
 
 func _is_tile_empty(x: int, y: int) -> bool:
-	if x < 0 or x >= _map_size.x: return false
-	if y < 0 or y >= _map_size.y: return false
+	if x < 0 or x >= map_size.x: return false
+	if y < 0 or y >= map_size.y: return false
 	return _map[y][x] == Tile.EMPTY
 
 
 func _add_start_room() -> void:
-	var starter_tile := Vector2i(_map_size.x / 2 -1, _map_size.y / 2 -1)
+	var starter_tile := Vector2i(map_size.x / 2 -1, map_size.y / 2 -1)
 	for y in range(3):
 		for x in range(3):
 			_map[starter_tile.y + y][starter_tile.x + x] = Tile.EMPTY
@@ -147,9 +155,9 @@ func _add_obsidian() -> void:
 
 
 func _fill_with_walls() -> void:
-	for y in range(_map_size.y):
+	for y in range(map_size.y):
 		_map.append([])
-		for x in range(_map_size.x):
+		for x in range(map_size.x):
 			_map[y].append(Tile.WALL)
 
 
