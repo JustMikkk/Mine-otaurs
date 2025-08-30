@@ -1,6 +1,6 @@
 extends Camera2D
 
-const CAMERA_SPEED = 100
+const CAMERA_SPEED = 10
 
 
 @export var _player1: Player
