@@ -99,8 +99,9 @@
 [ext_resource type="Texture2D" uid="uid://cnqxu41itnv5m" path="res://assets/chill_guy/walk_back/walk_back_0024.png" id="97_2ng8n"]
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="98_i6ap2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_olg7q"]
-radius = 15.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6ap2"]
+radius = 32.0
+height = 96.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1rx8"]
 animations = [{
@@ -425,18 +426,19 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_p47bc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_olg7q")
+shape = SubResource("CapsuleShape2D_i6ap2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_t1rx8")
 autoplay = "default"
 frame_progress = 0.499414
 
 [node name="Marker" type="Sprite2D" parent="."]
-position = Vector2(32, 0)
+position = Vector2(128, 0)
+scale = Vector2(4, 4)
 texture = ExtResource("98_i6ap2")

@@ -1,8 +1,9 @@
+class_name Player
 extends CharacterBody2D
 
 signal break_wall(pos: Vector2i)
 
-const SPEED = 200.0
+const SPEED = 400.0
 const ACCELERATION = 0.2
 const FRICTION = 0.25
 
@@ -22,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(Vector2.ZERO, FRICTION)
 	
 	if Input.is_action_just_pressed(_player_actions[4]):
-		break_wall.emit((_marker.global_position - Vector2.ONE * 16)/32)
+		break_wall.emit(_marker.global_position)
 	
 	_animated_sprite_2d.speed_scale = clamp(velocity.length(), 0, 1)
 	
@@ -37,7 +38,7 @@ func _set_marker_pos(dir: Vector2) -> void:
 	else:
 		marker_dir = Vector2(0, 1) if dir.y > 0 else Vector2(0, -1)
 	
-	_marker.global_position = (Vector2i(global_position) / 32) * 32 + Vector2i.ONE * 16 + marker_dir * 32
+	_marker.global_position = (Vector2i(global_position) / 128) * 128 + Vector2i.ONE * 64 + marker_dir * 128
 
 
 func _animate(dir: Vector2) -> void:

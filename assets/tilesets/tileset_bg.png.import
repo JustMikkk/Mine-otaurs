@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lk0xfkm5jcwr"
-path="res://.godot/imported/vampire_v1_3.png-776d263bb4f44521b8bf5cbba0bc3f6a.ctex"
+uid="uid://bx7w12ai8fpkj"
+path="res://.godot/imported/tileset_bg.png-4ab5ccedf6ce8073c1c30a6c5189dc26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vampire/vampire_v1_3.png"
-dest_files=["res://.godot/imported/vampire_v1_3.png-776d263bb4f44521b8bf5cbba0bc3f6a.ctex"]
+source_file="res://assets/tilesets/tileset_bg.png"
+dest_files=["res://.godot/imported/tileset_bg.png-4ab5ccedf6ce8073c1c30a6c5189dc26.ctex"]
 
 [params]
 
