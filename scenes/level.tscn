@@ -109,7 +109,7 @@ script = ExtResource("4_t1rx8")
 [node name="MainCamera" parent="Level_maker" node_paths=PackedStringArray("_player1", "_player2") instance=ExtResource("4_ppgk2")]
 visible = false
 position = Vector2(2216, 1329)
-enabled = false
+zoom = Vector2(0.5, 0.5)
 _player1 = NodePath("../../ligth/P1")
 _player2 = NodePath("../../ligth/P2")
 
@@ -122,10 +122,6 @@ trect = NodePath("../TextureRect")
 
 [node name="Graphic" type="Node" parent="ligth"]
 script = ExtResource("8_b121j")
-
-[node name="Camera2D" type="Camera2D" parent="ligth"]
-position = Vector2(2055, 1213)
-zoom = Vector2(0.3, 0.3)
 
 [node name="Icon" type="Sprite2D" parent="ligth"]
 modulate = Color(0.208207, 0.223416, 0.257085, 1)
