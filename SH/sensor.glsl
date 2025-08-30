@@ -8,7 +8,7 @@ layout(set = 1, binding = 2, std430) restrict buffer MBuffer {
 }maze_buffer;
 
 layout(set = 1, binding = 3, std430) restrict buffer PBuffer {
-    vec2 p;
+    vec2 p[];
 }point_buffer;
 
 layout(set = 1, binding = 4, std430) restrict buffer LBuffer {
@@ -38,8 +38,8 @@ void main() {
     ivec2 maze_pos=ivec2(floor(sensor_buffer.data[gl_GlobalInvocationID.x]/sc));
     //maze_pos=ivec2(7,7);
     int ligth=0;
-    for(int x=-1;x<2;x++){
-        for(int y=-1;y<2;y++){
+    for(int x=-4;x<5;x++){
+        for(int y=-4;y<5;y++){
             int nligth=ligth_buffer.data[(maze_pos.x+x)*info_buffer.ligth_size_y+(maze_pos.y+y)];
             ligth=max(nligth,ligth);
         }

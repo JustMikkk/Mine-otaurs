@@ -1,5 +1,6 @@
 #@tool
 extends Node
+class_name MyLigth
 @onready var Graphic=$Graphic
 @export var trect:TextureRect
 var tab_i=[
@@ -42,6 +43,7 @@ var Tsize=Vector2i(36,36)*128#Vector2i(500,500)
 
 var sensors=[]
 var sensors_data=[]
+var lights=[]
 
 func make_tab():
 	var mg=$"../Level_maker/MapGenerator"
@@ -70,6 +72,11 @@ func register_sensor(n:Node2D):
 	var id = sensors.size()
 	sensors.append(n)
 	sensors_data.append(0)
+	return id
+
+func register_ligth(n:Node2D):
+	var id = lights.size()
+	lights.append(n)
 	return id
 	
 func get_sensor_data(id:int):
@@ -141,7 +148,7 @@ func init_gpu():
 	rd = RenderingServer.get_rendering_device()
 	var uniformI:RDUniform=init_texture(1)
 	var uniformMaze=Graphic.to_rd_int_array(rd,func_to_array(func (n):return tab[n/maze_size_y][n%maze_size_y],maze_size_y*maze_size_y),2,maze)
-	var uniformPoint=Graphic.to_rd_float_array(rd, PackedFloat32Array([1.5,1.5]),3,li_point)
+	var uniformPoint=Graphic.to_rd_float_array(rd, func_to_arrayf(func (n):return 1.5,2*100),3,li_point)
 	var uniformLi=Graphic.to_rd_int_array(rd,func_to_array(func (n):return 0.0,ligth_size_y*ligth_size_y),4)
 	var uniformInfo=Graphic.to_rd_int_array(rd,PackedInt32Array([
 		Tsize.x,
@@ -182,10 +189,18 @@ func reaload_maze():
 var lx=1.5
 var ly=1.5
 func reaload_li():
-	rd.buffer_update(li_point[0][0],0,8,PackedFloat32Array([lx,ly]).to_byte_array())
+	var a=PackedFloat32Array([lx,ly])
+	for l in lights:
+		a.append(clamp(l.global_position.x/maze_scale_down,0.0,maze_size_y-1))
+		a.append(clamp(l.global_position.y/maze_scale_down,0.0,maze_size_y-1))
+		
+	rd.buffer_update(li_point[0][0],0,4*a.size(),a.to_byte_array())
+	print("reLOAD")
+	print(a)
 
 
 func _process(delta: float) -> void:
+	
 	if not Engine.is_editor_hint():
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			
@@ -273,9 +288,11 @@ func _process(delta: float) -> void:
 		
 		rd.compute_list_bind_uniform_set(compute_list,uniform_set,1)
 		rd.compute_list_bind_compute_pipeline(compute_list,pipeline_ray)
-		rd.compute_list_dispatch(compute_list,20,1,1)
+		rd.compute_list_dispatch(compute_list,20,1+lights.size(),1)
 		rd.compute_list_add_barrier(compute_list)
+		print(1+lights.size())
 		
+	
 		
 		rd.compute_list_bind_uniform_set(compute_list,uniform_set,1)
 		rd.compute_list_bind_compute_pipeline(compute_list,pipeline_disp)

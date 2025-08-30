@@ -8,7 +8,7 @@ layout(set = 1, binding = 2, std430) restrict buffer MBuffer {
 }maze_buffer;
 
 layout(set = 1, binding = 3, std430) restrict buffer PBuffer {
-    vec2 p;
+    vec2 p[];
 }point_buffer;
 
 layout(set = 1, binding = 4, std430) restrict buffer LBuffer {
@@ -39,7 +39,7 @@ void main() {
     int maze_size_y=info_buffer.maze_size_y;
 
 
-    vec2 pos=point_buffer.p;
+    vec2 pos=point_buffer.p[gl_GlobalInvocationID.y];
     vec2 vel=vec2(sin(gl_GlobalInvocationID.x*0.17+0.95),cos(gl_GlobalInvocationID.x*0.17+0.95))*0.03;
     int live=10;
     for(int step=0;step<200;step++){
@@ -48,7 +48,7 @@ void main() {
         ivec2 inpos2=ivec2(floor(npos*5.0));
         //atomicAdd(ligth_buffer.data[ipos2.x*50+ipos2.y],live);
         
-        if (maze_buffer.data[inpos.x*maze_size_y+inpos.y]==1){
+        if ((maze_buffer.data[inpos.x*maze_size_y+inpos.y]==1)&&(step>10)){
             live-=1;
             if(live>0){
                 if(floor(pos.x)!=floor(npos.x)){

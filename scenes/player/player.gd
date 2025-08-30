@@ -19,7 +19,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var ligth=$"..".get_sensor_data(ligth_id)
-	print(ligth)
+	#print(ligth)
+	if ligth>8:
+		$AnimatedSprite2D.modulate=Color(0.9,0.9,0.9)
+	else:
+		$AnimatedSprite2D.modulate=Color(0.1,0.1,0.9)
 	if ligth>8:
 		var direction := Input.get_vector(_player_actions[0], _player_actions[1], _player_actions[2], _player_actions[3]).normalized()
 		if direction:

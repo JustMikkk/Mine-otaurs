@@ -14,7 +14,7 @@ var _map: Array[Array]
 var _random_bound = 1
 var _empty_tiles = 9
 
-@onready var _bg_tile_map: TileMapLayer = $"../BG-TileMap"
+@onready var _bg_tile_map: TileMapLayer = $"../../BG-TileMap"
 @onready var _walls_tile_map: TileMapLayer = $"../Walls-TileMap"
 @onready var _empty_tiles_goal = map_size.x * map_size.y / 5
 

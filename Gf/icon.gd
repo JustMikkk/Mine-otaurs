@@ -2,7 +2,7 @@ extends Sprite2D
 var my_id:int
 func _ready() -> void:
 	my_id=$"..".register_sensor(self)
-	print(my_id)
+	#print(my_id)
 
 func _process2(delta: float) -> void:
 	var Nposition=position+Vector2(randf()-0.5,randf()-0.5)*delta*200.0
