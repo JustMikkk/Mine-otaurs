@@ -156,10 +156,10 @@ func _can_place_here(x: int, y: int) -> bool:
 
 
 func _get_room_chance() -> bool:
-	if (_empty_tiles > _random_bound * 3):
-		_random_bound += 1
-	
-	return randi_range(0, _random_bound) == 1
+	#if (_empty_tiles > _random_bound * 3):
+		#_random_bound += 1
+	#print(_random_bound)
+	return randi_range(0, 4) == 1
 
 
 func _is_top_left_wall(x: int, y: int) -> bool:

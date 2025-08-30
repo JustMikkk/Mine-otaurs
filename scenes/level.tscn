@@ -116,11 +116,12 @@ script = ExtResource("4_t1rx8")
 
 [node name="MainCamera" parent="Level_maker" node_paths=PackedStringArray("_player1", "_player2") instance=ExtResource("4_ppgk2")]
 position = Vector2(2216, 1329)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.75, 0.75)
 _player1 = NodePath("../../ligth/MinoTorch")
 _player2 = NodePath("../../ligth/P2")
 
 [node name="Label" type="Label" parent="Level_maker/MainCamera"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -138,7 +139,7 @@ script = ExtResource("6_fpun6")
 
 [node name="MapGenerator" type="Node" parent="Level_maker"]
 script = ExtResource("6_2r41h")
-map_size = Vector2i(50, 50)
+map_size = Vector2i(75, 75)
 
 [node name="ligth" type="Node" parent="." node_paths=PackedStringArray("trect")]
 script = ExtResource("7_klq6b")
@@ -151,7 +152,6 @@ script = ExtResource("8_b121j")
 position = Vector2(1444, 1461)
 
 [node name="Circle3" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li")]
-position = Vector2(0, 14)
 scale = Vector2(8, 8)
 texture = ExtResource("10_8iemx")
 script = ExtResource("11_64w2a")
