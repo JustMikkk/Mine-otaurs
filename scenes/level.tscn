@@ -109,7 +109,7 @@ script = ExtResource("4_t1rx8")
 [node name="MainCamera" parent="Level_maker" node_paths=PackedStringArray("_player1", "_player2") instance=ExtResource("4_ppgk2")]
 visible = false
 position = Vector2(2216, 1329)
-zoom = Vector2(0.1, 0.1)
+zoom = Vector2(0.5, 0.5)
 _player1 = NodePath("../../ligth/P1")
 _player2 = NodePath("../../ligth/P2")
 
