@@ -45,13 +45,19 @@ void main() {
     int new=100;
     for(int step=0;step<200;step++){
         vec2 npos=pos+vel;
-        ivec2 inpos=ivec2(floor(npos));
+        ivec2 inposA=ivec2(floor(npos+vec2(0.0,-0.01)));
+        ivec2 inposB=ivec2(floor(npos+vec2(0.0,+0.01)));
+        ivec2 inposC=ivec2(floor(npos+vec2(-0.01,0.0)));
+        ivec2 inposD=ivec2(floor(npos+vec2(+0.01,0.0)));
         ivec2 inpos2=ivec2(floor(npos*5.0));
         //atomicAdd(ligth_buffer.data[ipos2.x*50+ipos2.y],live);
         if(step==100){
             new=0;
         }
-        if ((maze_buffer.data[inpos.x*maze_size_y+inpos.y]==1)&&(step>10)){
+        if ((maze_buffer.data[inposA.x*maze_size_y+inposA.y]==1)&&
+        (maze_buffer.data[inposC.x*maze_size_y+inposC.y]==1)&&
+        (maze_buffer.data[inposD.x*maze_size_y+inposD.y]==1)&&
+        (maze_buffer.data[inposB.x*maze_size_y+inposB.y]==1)&&(step>10)){
             live-=1;
             if(live>0){
                 if(floor(pos.x)!=floor(npos.x)){

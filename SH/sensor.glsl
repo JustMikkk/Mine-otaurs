@@ -38,8 +38,8 @@ void main() {
     ivec2 maze_pos=ivec2(floor(sensor_buffer.data[gl_GlobalInvocationID.x]/sc));
     //maze_pos=ivec2(7,7);
     int ligth=0;
-    for(int x=-4;x<5;x++){
-        for(int y=-4;y<5;y++){
+    for(int x=-3;x<4;x++){
+        for(int y=-3;y<4;y++){
             int nligth=ligth_buffer.data[(maze_pos.x+x)*info_buffer.ligth_size_y+(maze_pos.y+y)];
             ligth=max(nligth,ligth);
         }
