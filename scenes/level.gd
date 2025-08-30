@@ -22,7 +22,9 @@ func _ready() -> void:
 	
 
 func _on_break_wall(pos: Vector2i) -> void:
-	if _walls_tile_map.get_cell_atlas_coords(_walls_tile_map.local_to_map(pos)) == TilesConfig.WALL_OBSIDIAN: 
-		return
+	if _map_generator.mine_tile(_walls_tile_map.local_to_map(pos)):
+		print("min")
 	
-	_walls_tile_map.erase_cell(_walls_tile_map.local_to_map(pos))
+	
+	
+	#_walls_tile_map.erase_cell(_walls_tile_map.local_to_map(pos))

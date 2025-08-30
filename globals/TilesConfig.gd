@@ -31,3 +31,92 @@ const WALLS_LEFT_RIGHT = [Vector2i(3, 6), Vector2i(4, 6), Vector2i(5, 6)]
 const WALL_CROSSROAD = Vector2i(6, 6)
 
 const WALL_SINGULAR = Vector2i(6, 0)
+
+func get_coresponding_tile(arr: Array[bool]) -> Vector2i:
+	match arr:
+		[
+			 true, 
+			true, true, true,
+			 true, 		]:
+			return WALLS_INSIDE[randi_range(0, 8)]
+		[
+			 false, 
+			false, true, true,
+			 true, 		]:
+			return WALL_CORNER_TOP_LEFT
+		[
+			 false, 
+			true, true, false,
+			 true, 		]:
+			return WALL_CORNER_TOP_RIGHT
+		[
+			 true, 
+			false, true, true,
+			 false, 		]:
+			return WALL_CORNER_BOTTOM_LEFT
+		[
+			 true, 
+			true, true, false,
+			 false, 		]:
+			return WALL_CORNER_BOTTOM_RIGHT
+		[
+			 false, 
+			true, true, true,
+			 true, 		]:
+			return WALLS_EDGE_TOP[randi_range(0, 2)]
+		[
+			 true, 
+			false, true, true,
+			 true, 		]:
+			return WALLS_EDGE_LEFT[randi_range(0, 2)]
+		[
+			 true, 
+			true, true, false,
+			 true, 		]:
+			return WALLS_EDGE_RIGHT[randi_range(0, 2)]
+		[
+			 true, 
+			true, true, true,
+			 false, 		]:
+			return WALLS_EDGE_BOTTOM[randi_range(0, 2)]
+		[
+			 false, 
+			false, true, false,
+			 true, 		]:
+			return WALL_ONE_TOP
+		[
+			 false, 
+			true, true, false,
+			 false, 		]:
+			return WALL_ONE_RIGHT
+		[
+			 false, 
+			false, true, true,
+			 false, 		]:
+			return WALL_ONE_LEFT
+		[
+			 true, 
+			false, true, false,
+			 false, 		]:
+			return WALL_ONE_BOTTOM
+		[
+			 true, 
+			false, true, false,
+			 true, 		]:
+			return WALLS_UP_DOWN[randi_range(0, 2)]
+		[
+			 false, 
+			true, true, true,
+			 false, 		]:
+			return WALLS_LEFT_RIGHT[randi_range(0, 2)]
+		[
+			 true, 
+			true, true, true,
+			 true, 		]:
+			return WALL_CROSSROAD
+		[
+			 false, 
+			false, true, false,
+			 false, 		]:
+			return WALL_SINGULAR
+	return WALL_SINGULAR
