@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://bplvnooaqa5eg"]
+[gd_scene load_steps=104 format=3 uid="uid://bplvnooaqa5eg"]
 
 [ext_resource type="Script" uid="uid://dvcajnftfgqd1" path="res://scenes/player/player.gd" id="1_p47bc"]
 [ext_resource type="Texture2D" uid="uid://dn8hwg85ixgx7" path="res://assets/chill_guy/walk_forward/walk_forward_0001.png" id="2_ws0t6"]
@@ -98,6 +98,8 @@
 [ext_resource type="Texture2D" uid="uid://df25fn8jqfp11" path="res://assets/chill_guy/walk_back/walk_back_0023.png" id="96_y5qpa"]
 [ext_resource type="Texture2D" uid="uid://cnqxu41itnv5m" path="res://assets/chill_guy/walk_back/walk_back_0024.png" id="97_2ng8n"]
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="98_i6ap2"]
+[ext_resource type="Texture2D" uid="uid://nwm75bs4r0om" path="res://assets/stun_ui/stun_frame_back.png" id="99_hdu4s"]
+[ext_resource type="Texture2D" uid="uid://br2fd86dwvawa" path="res://assets/stun_ui/stun_frame.png" id="100_0wr6q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6ap2"]
 radius = 40.0
@@ -454,5 +456,21 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(96, 0)
 shape = SubResource("CapsuleShape2D_88c1f")
+
+[node name="Stun" type="Node2D" parent="."]
+visible = false
+
+[node name="StunFrameBack2" type="Sprite2D" parent="Stun"]
+modulate = Color(0.435294, 0.984314, 0.831373, 0.403922)
+position = Vector2(0, -1)
+texture = ExtResource("99_hdu4s")
+
+[node name="StunFrameBack" type="Sprite2D" parent="Stun"]
+position = Vector2(0, -1)
+texture = ExtResource("99_hdu4s")
+
+[node name="StunFrame" type="Sprite2D" parent="Stun"]
+position = Vector2(-1, -1)
+texture = ExtResource("100_0wr6q")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

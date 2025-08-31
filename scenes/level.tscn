@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://drtrate6txvwq"]
+[gd_scene load_steps=25 format=3 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
 [ext_resource type="Script" uid="uid://mlgit2p10er2" path="res://globals/game_manager.gd" id="1_ux5qa"]
@@ -232,8 +232,9 @@ script = ExtResource("8_b121j")
 _player_1 = NodePath("../MinoTorch")
 _player_2 = NodePath("../MinerTaur")
 
-[node name="MinoTorch" parent="ligth" instance=ExtResource("9_fpun6")]
+[node name="MinoTorch" parent="ligth" node_paths=PackedStringArray("players") instance=ExtResource("9_fpun6")]
 collision_mask = 6
+players = [NodePath("."), NodePath("../MinerTaur")]
 
 [node name="Torch" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li")]
 scale = Vector2(8, 8)
@@ -242,8 +243,9 @@ li = NodePath("../..")
 limited = true
 power_dec = 10.0
 
-[node name="MinerTaur" parent="ligth" instance=ExtResource("13_arp2o")]
+[node name="MinerTaur" parent="ligth" node_paths=PackedStringArray("players") instance=ExtResource("13_arp2o")]
 collision_mask = 6
+players = [NodePath("../MinoTorch"), NodePath(".")]
 
 [node name="CenterLight" type="Sprite2D" parent="ligth" node_paths=PackedStringArray("li")]
 position = Vector2(1913, 2392)

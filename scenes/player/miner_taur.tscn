@@ -344,9 +344,9 @@ _has_pickaxe = true
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_oham6")
-animation = &"move_left"
+animation = &"attack_left"
 autoplay = "move_down"
-frame_progress = 0.683518
+frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 disabled = true

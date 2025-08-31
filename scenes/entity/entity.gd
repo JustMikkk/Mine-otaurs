@@ -47,10 +47,17 @@ func _on_timer_timeout() -> void:
 		_is_locked_in = true
 	
 	if not _is_locked_in:
+		var goal_id=0
 		if global_position.distance_to(_players[0].global_position) > global_position.distance_to(_players[1].global_position):
 			_goal = _players[1]
+			goal_id = 1
 		else:
 			_goal = _players[0]
+			goal_id = 0
+		if _goal._current_state==Player.State.STUN:
+			goal_id=1-goal_id
+			_goal=_players[goal_id]
+		
 	
 		if _navigation_agent_2d.target_position == _goal.global_position:
 			return
