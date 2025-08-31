@@ -26,3 +26,7 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_U):
 		power=max_power
 		low_power_time=low_power_max_time
+
+func refill():
+	power=max_power
+	low_power_time=low_power_max_time

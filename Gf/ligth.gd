@@ -83,14 +83,17 @@ func register_ligth(n:Node2D,intensity:float):
 	
 func get_sensor_data(id:int):
 	return sensors_data[id]
-
+var sensor_count=0
 func upadate_sensors():
 	var t=PackedFloat32Array([])
+	sensor_count=0
 	for sid in range(sensors.size()):
 		var s:Node2D=sensors[sid]
+		if is_instance_valid(s):
+			sensor_count+=1
 		#var posl=$"../TextureRect".to_local(s.global_position)
-		t.append(s.global_position.x)
-		t.append(s.global_position.y)
+			t.append(s.global_position.x)
+			t.append(s.global_position.y)
 	rd.buffer_update(SensorIn[0][0],0,t.size()*4,t.to_byte_array())
 
 
@@ -308,7 +311,7 @@ func _process(delta: float) -> void:
 		
 		rd.compute_list_bind_uniform_set(compute_list,uniform_set,1)
 		rd.compute_list_bind_compute_pipeline(compute_list,pipeline_sen)
-		rd.compute_list_dispatch(compute_list,sensors.size(),1,1)
+		rd.compute_list_dispatch(compute_list,sensor_count,1,1)
 		rd.compute_list_add_barrier(compute_list)
 
 
