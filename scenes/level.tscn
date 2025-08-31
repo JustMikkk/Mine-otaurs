@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://drtrate6txvwq"]
+[gd_scene load_steps=28 format=3 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dsqwnd3ov8hhp" path="res://scenes/g_mwakeup.gd" id="1_h6wmr"]
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
@@ -12,9 +12,7 @@
 [ext_resource type="Script" uid="uid://bauxuuqud2jtv" path="res://Gf/ligth.gd" id="7_klq6b"]
 [ext_resource type="Script" uid="uid://ykqaxddacfa7" path="res://Global/graphic.gd" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://bmjffm6nn0g4n" path="res://scenes/player/mino_torch.tscn" id="9_fpun6"]
-[ext_resource type="Texture2D" uid="uid://cqt4edu5wt2qp" path="res://icon.svg" id="9_olg7q"]
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="10_8iemx"]
-[ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="10_t1rx8"]
 [ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="11_64w2a"]
 [ext_resource type="PackedScene" uid="uid://bfcf4sa2jd587" path="res://scenes/player/miner_taur.tscn" id="13_arp2o"]
 [ext_resource type="Script" path="res://scenes/center_light.gd" id="15_gunhw"]
@@ -322,13 +320,6 @@ shape = SubResource("CircleShape2D_gunhw")
 
 [node name="Sprite2D" type="Sprite2D" parent="ligth/Anvil"]
 texture = ExtResource("16_gunhw")
-
-[node name="Icon" type="Sprite2D" parent="ligth"]
-modulate = Color(0.208207, 0.223416, 0.257085, 1)
-position = Vector2(3002, 2371)
-scale = Vector2(3, 3)
-texture = ExtResource("9_olg7q")
-script = ExtResource("10_t1rx8")
 
 [node name="UICanvas" parent="." instance=ExtResource("18_82cfe")]
 layer = 5
