@@ -35,6 +35,7 @@ myLight=""
 UICanvas=""
 Torch=""
 Entities=""
+MainCamera=""
 
 [input]
 

@@ -6,12 +6,14 @@ var _people_count: int = 0
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if not body.has_pickaxe:
+		if body.has_pickaxe:
+			GameManager.pick_durability = GameManager.max_pick_durability
+			GameManager.ui_canvas.update_pick_value()
+		else:
 			body.get_node("Torch").refill_tween()
 	
 	if body is Person:
 		if body.is_locked_in: return
-		print("pleaseplease")
 		
 		body.lock_in(global_position + _avaliable_places[_people_count] * 128 + Vector2.ONE * 64)
 		_people_count += 1

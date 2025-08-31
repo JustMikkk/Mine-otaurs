@@ -176,6 +176,7 @@ func _animate(dir: Vector2) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
+		GameManager.main_camera.add_trauma(1)
 		if has_pickaxe:
 			EventBus.pick_used.emit()
 		else:

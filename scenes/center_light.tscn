@@ -1,0 +1,89 @@
+[gd_scene load_steps=18 format=3 uid="uid://cqfug37a3vo5o"]
+
+[ext_resource type="Script" uid="uid://bydi2bv8ghvux" path="res://scenes/center_light.gd" id="1_vqr5n"]
+[ext_resource type="Texture2D" uid="uid://c60gdfwnxvvw7" path="res://assets/the_light/the_light_0001.png" id="2_7wid8"]
+[ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="3_0t66e"]
+[ext_resource type="Texture2D" uid="uid://c4pu464cxso2t" path="res://assets/the_light/the_light_0002.png" id="3_8gay6"]
+[ext_resource type="Texture2D" uid="uid://cbhx20cbyyimp" path="res://assets/the_light/the_light_0003.png" id="4_5m0ey"]
+[ext_resource type="Texture2D" uid="uid://0n7ilqbqhjr1" path="res://assets/the_light/the_light_0004.png" id="5_iexvp"]
+[ext_resource type="Texture2D" uid="uid://dumf5xf4qept2" path="res://assets/the_light/the_light_0005.png" id="6_d6ngt"]
+[ext_resource type="Texture2D" uid="uid://caypxb67uqg40" path="res://assets/the_light/the_light_0006.png" id="7_byo1y"]
+[ext_resource type="Texture2D" uid="uid://wqs40pg6f7nu" path="res://assets/the_light/the_light_0007.png" id="8_v0ysl"]
+[ext_resource type="Texture2D" uid="uid://ck8ngtlhvxxpx" path="res://assets/the_light/the_light_0008.png" id="9_p8fyi"]
+[ext_resource type="Texture2D" uid="uid://cbwnk546syfsy" path="res://assets/the_light/the_light_0009.png" id="10_ps6ft"]
+[ext_resource type="Texture2D" uid="uid://b0q0rrj4a8hvs" path="res://assets/the_light/the_light_0010.png" id="11_u12xg"]
+[ext_resource type="Texture2D" uid="uid://bhbmievusvlkt" path="res://assets/the_light/the_light_0011.png" id="12_ud5ln"]
+[ext_resource type="Texture2D" uid="uid://yyx7tp4nssiw" path="res://assets/the_light/the_light_0012.png" id="13_5jjcl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n6mtv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7wid8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8gay6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5m0ey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iexvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d6ngt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_byo1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v0ysl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p8fyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ps6ft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u12xg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ud5ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5jjcl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gofh"]
+radius = 320.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wid8"]
+radius = 150.479
+
+[node name="CenterLight" type="Area2D"]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource("1_vqr5n")
+_avaliable_places = Array[Vector2]([Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2), Vector2(2, -1), Vector2(2, 0), Vector2(2, 1), Vector2(2, 2), Vector2(1, 2), Vector2(-1, 2), Vector2(-2, 2), Vector2(-2, 1), Vector2(-2, -1)])
+
+[node name="LightSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n6mtv")
+autoplay = "default"
+script = ExtResource("3_0t66e")
+max_power = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8gofh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_7wid8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
