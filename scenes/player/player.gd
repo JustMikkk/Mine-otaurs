@@ -82,6 +82,10 @@ func take_damage() -> void:
 	_animated_sprite_2d.modulate = Color.WHITE
 
 
+func is_frozen() -> bool:
+	return _current_state == State.FROZEN 
+
+
 func _attack() -> void:
 	var new_degrees: float
 	_current_state = State.ATTACKING

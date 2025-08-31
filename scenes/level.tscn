@@ -1,11 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://drtrate6txvwq"]
+[gd_scene load_steps=25 format=3 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
 [ext_resource type="Script" uid="uid://mlgit2p10er2" path="res://globals/game_manager.gd" id="1_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
 [ext_resource type="TileSet" uid="uid://ctrvhns6s4m8j" path="res://tilesets/walls.tres" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cmj3okni4pm7" path="res://scenes/main_camera.tscn" id="4_ppgk2"]
-[ext_resource type="Script" uid="uid://cop3vhisnv425" path="res://scenes/walls_tile_map.gd" id="4_t1rx8"]
+[ext_resource type="Script" path="res://scenes/walls_tile_map.gd" id="4_t1rx8"]
 [ext_resource type="Script" uid="uid://deqr4vdkjoc3l" path="res://scenes/map_generator.gd" id="6_2r41h"]
 [ext_resource type="Script" uid="uid://chdstbgb62stv" path="res://Gf/label.gd" id="6_fpun6"]
 [ext_resource type="Script" uid="uid://bauxuuqud2jtv" path="res://Gf/ligth.gd" id="7_klq6b"]

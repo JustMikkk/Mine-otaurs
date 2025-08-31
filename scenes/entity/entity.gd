@@ -1,17 +1,17 @@
 class_name Entity
 extends CharacterBody2D
 
-const MOVEMENT_SPEED = 9800.0
+const MOVEMENT_SPEED = 12000.0
 
 var center_goal: Vector2i
 
-var _goal: Node2D
 
 @onready var _light: MyLigth = get_tree().get_first_node_in_group("myLight")
 var _light_id: int
 var _is_frozen := false
 var _is_locked_in := false
 
+@onready var _goal: Vector2 = global_position
 @onready var _players: Array = get_tree().get_nodes_in_group("Players")
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
@@ -42,20 +42,28 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if _is_frozen: return
+	
 	if global_position.distance_to(center_goal) < 256:
 		_navigation_agent_2d.target_position = center_goal
 		_is_locked_in = true
 	
 	if not _is_locked_in:
-		if global_position.distance_to(_players[0].global_position) > global_position.distance_to(_players[1].global_position):
-			_goal = _players[1]
-		else:
-			_goal = _players[0]
-	
-		if _navigation_agent_2d.target_position == _goal.global_position:
+		var closer_player_index = 1 if global_position.distance_to(_players[0].global_position) \
+		> global_position.distance_to(_players[1].global_position) else 0
+		var other_player_index = 0 if closer_player_index == 1 else 1
+		
+		if global_position.distance_to(_players[closer_player_index].global_position) < 128 * 3 \
+		and not _players[closer_player_index].is_frozen():
+			_goal = _players[closer_player_index].global_position
+		
+		elif global_position.distance_to(_players[other_player_index].global_position) < 128 * 3 \
+		and not _players[other_player_index].is_frozen():
+			_goal = _players[other_player_index].global_position
+		
+		if _navigation_agent_2d.target_position == _goal:
 			return
 		
-		_navigation_agent_2d.target_position = _goal.global_position
+		_navigation_agent_2d.target_position = _goal
 
 
 func _animate() -> void:
