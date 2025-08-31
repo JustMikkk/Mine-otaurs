@@ -21,7 +21,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if is_locked_in: return
 	var light_value: int = _light.get_sensor_data(_light_id)
 	
 	#print(light_value)
@@ -41,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if _is_frozen: return
+	if _is_frozen or is_locked_in: return
 	
 	var closer_player_index = 1 if global_position.distance_to(_players[0].global_position) \
 	> global_position.distance_to(_players[1].global_position) else 0

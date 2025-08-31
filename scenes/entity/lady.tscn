@@ -1,0 +1,237 @@
+[gd_scene load_steps=53 format=3 uid="uid://d358rr3can7cw"]
+
+[ext_resource type="PackedScene" uid="uid://dpgcsckyiq3l7" path="res://scenes/entity/person.tscn" id="1_4xfbx"]
+[ext_resource type="Texture2D" uid="uid://dn8hwg85ixgx7" path="res://assets/chill_guy/walk_forward/walk_forward_0001.png" id="2_0jsh3"]
+[ext_resource type="Texture2D" uid="uid://1y4e1m2kpadq" path="res://assets/chill_guy/walk_forward/walk_forward_0002.png" id="3_k24hf"]
+[ext_resource type="Texture2D" uid="uid://b4tioeshn2lxk" path="res://assets/greeks/woman/walk/forward/walk_forward_0001.png" id="4_355au"]
+[ext_resource type="Texture2D" uid="uid://dpyvkwkh4q3bo" path="res://assets/greeks/woman/walk/forward/walk_forward_0002.png" id="5_ywakp"]
+[ext_resource type="Texture2D" uid="uid://b6lbjtdi5si4v" path="res://assets/greeks/woman/walk/forward/walk_forward_0003.png" id="6_bug5o"]
+[ext_resource type="Texture2D" uid="uid://cchub33tq7hap" path="res://assets/greeks/woman/walk/forward/walk_forward_0004.png" id="7_b0hmd"]
+[ext_resource type="Texture2D" uid="uid://b0cc3wmy511nn" path="res://assets/greeks/woman/walk/forward/walk_forward_0005.png" id="8_wti2q"]
+[ext_resource type="Texture2D" uid="uid://sk4f1hqilm4n" path="res://assets/greeks/woman/walk/forward/walk_forward_0006.png" id="9_wglb4"]
+[ext_resource type="Texture2D" uid="uid://dggcknjokeidp" path="res://assets/greeks/woman/walk/forward/walk_forward_0007.png" id="10_nyd02"]
+[ext_resource type="Texture2D" uid="uid://x6yttv7xh13t" path="res://assets/greeks/woman/walk/forward/walk_forward_0008.png" id="11_hu7fp"]
+[ext_resource type="Texture2D" uid="uid://bnkux2adhhfr5" path="res://assets/greeks/woman/walk/forward/walk_forward_0009.png" id="12_7b4ue"]
+[ext_resource type="Texture2D" uid="uid://cs0u03bslf7nm" path="res://assets/greeks/woman/walk/forward/walk_forward_0010.png" id="13_wi3vh"]
+[ext_resource type="Texture2D" uid="uid://bc1ro4e4fgshh" path="res://assets/greeks/woman/walk/forward/walk_forward_0011.png" id="14_m5y4s"]
+[ext_resource type="Texture2D" uid="uid://cuvsqvbm7xele" path="res://assets/greeks/woman/walk/forward/walk_forward_0012.png" id="15_lcq0m"]
+[ext_resource type="Texture2D" uid="uid://6s14xfiycu3j" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0001.png" id="16_n86y7"]
+[ext_resource type="Texture2D" uid="uid://b35nr2r7llasp" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0002.png" id="17_nl4qt"]
+[ext_resource type="Texture2D" uid="uid://77ay273khptg" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0003.png" id="18_kpnp2"]
+[ext_resource type="Texture2D" uid="uid://mid0xutpno3j" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0004.png" id="19_wrnvo"]
+[ext_resource type="Texture2D" uid="uid://cl0gk3de4nu85" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0005.png" id="20_m2aq8"]
+[ext_resource type="Texture2D" uid="uid://bqvh56dga1ds8" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0006.png" id="21_ofu7i"]
+[ext_resource type="Texture2D" uid="uid://c404s3286pum5" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0007.png" id="22_vgs58"]
+[ext_resource type="Texture2D" uid="uid://cpw85pvdqrqeb" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0008.png" id="23_htrue"]
+[ext_resource type="Texture2D" uid="uid://bx4oriqiuvu7v" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0009.png" id="24_taxw1"]
+[ext_resource type="Texture2D" uid="uid://f2tqdcpyk54t" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0010.png" id="25_5fa65"]
+[ext_resource type="Texture2D" uid="uid://bsaqcywsw81tu" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0011.png" id="26_y2sgu"]
+[ext_resource type="Texture2D" uid="uid://bli0dj4a8r1sf" path="res://assets/greeks/woman/walk/side_2/walk_side_2_0012.png" id="27_1rukx"]
+[ext_resource type="Texture2D" uid="uid://c4pvo01ahgout" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0001.png" id="28_el6b4"]
+[ext_resource type="Texture2D" uid="uid://c4mp1ue3hjaun" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0002.png" id="29_o1uad"]
+[ext_resource type="Texture2D" uid="uid://bkfbeg8ebntgy" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0003.png" id="30_odsds"]
+[ext_resource type="Texture2D" uid="uid://f8hspeykgi3w" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0004.png" id="31_hulbr"]
+[ext_resource type="Texture2D" uid="uid://p8e7rxjqeot3" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0005.png" id="32_rqyno"]
+[ext_resource type="Texture2D" uid="uid://dmdrlhxchvgdk" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0006.png" id="33_ctvmy"]
+[ext_resource type="Texture2D" uid="uid://dwwqqo0fh6jsd" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0007.png" id="34_kigih"]
+[ext_resource type="Texture2D" uid="uid://d08wcax0h8qoq" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0008.png" id="35_ah5ag"]
+[ext_resource type="Texture2D" uid="uid://cythw121x8cc5" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0009.png" id="36_fwkpy"]
+[ext_resource type="Texture2D" uid="uid://b2myipywq88bo" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0010.png" id="37_3d806"]
+[ext_resource type="Texture2D" uid="uid://n0dlcw83074w" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0011.png" id="38_fr0ec"]
+[ext_resource type="Texture2D" uid="uid://ctmbduyepqe6h" path="res://assets/greeks/woman/walk/side_1/walk_side_1_0012.png" id="39_yfv7m"]
+[ext_resource type="Texture2D" uid="uid://dooh3wbb35dx0" path="res://assets/greeks/woman/walk/back/walk_back_0001.png" id="40_t1gmx"]
+[ext_resource type="Texture2D" uid="uid://m00mftuwrpwn" path="res://assets/greeks/woman/walk/back/walk_back_0002.png" id="41_s7aqi"]
+[ext_resource type="Texture2D" uid="uid://crbb52vknhx3g" path="res://assets/greeks/woman/walk/back/walk_back_0003.png" id="42_tv1tw"]
+[ext_resource type="Texture2D" uid="uid://dd82axfake38j" path="res://assets/greeks/woman/walk/back/walk_back_0004.png" id="43_mf6fx"]
+[ext_resource type="Texture2D" uid="uid://chnmfrito8bam" path="res://assets/greeks/woman/walk/back/walk_back_0005.png" id="44_wem4v"]
+[ext_resource type="Texture2D" uid="uid://bf5g2yr7k85ho" path="res://assets/greeks/woman/walk/back/walk_back_0006.png" id="45_03nkr"]
+[ext_resource type="Texture2D" uid="uid://b6s7mveuil758" path="res://assets/greeks/woman/walk/back/walk_back_0007.png" id="46_06bj2"]
+[ext_resource type="Texture2D" uid="uid://cna43he7uq28l" path="res://assets/greeks/woman/walk/back/walk_back_0008.png" id="47_4l4i2"]
+[ext_resource type="Texture2D" uid="uid://dn5cj1uqwvgwq" path="res://assets/greeks/woman/walk/back/walk_back_0009.png" id="48_d27xa"]
+[ext_resource type="Texture2D" uid="uid://cfmuqhj42lwmo" path="res://assets/greeks/woman/walk/back/walk_back_0010.png" id="49_w04xu"]
+[ext_resource type="Texture2D" uid="uid://dub1pvci36kcc" path="res://assets/greeks/woman/walk/back/walk_back_0011.png" id="50_wmqst"]
+[ext_resource type="Texture2D" uid="uid://bc3y4wnfscrqp" path="res://assets/greeks/woman/walk/back/walk_back_0012.png" id="51_g8vtn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8nn31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0jsh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k24hf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_355au")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ywakp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bug5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b0hmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wti2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wglb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nyd02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hu7fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7b4ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wi3vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_m5y4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lcq0m")
+}],
+"loop": true,
+"name": &"down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_n86y7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nl4qt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kpnp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wrnvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_m2aq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ofu7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vgs58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_htrue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_taxw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_5fa65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_y2sgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1rukx")
+}],
+"loop": true,
+"name": &"left",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_el6b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_o1uad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_odsds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hulbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rqyno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ctvmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_kigih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ah5ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_fwkpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_3d806")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_fr0ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_yfv7m")
+}],
+"loop": true,
+"name": &"right",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_t1gmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_s7aqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_tv1tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_mf6fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_wem4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_03nkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_06bj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_4l4i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_d27xa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_w04xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_wmqst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_g8vtn")
+}],
+"loop": true,
+"name": &"up",
+"speed": 12.0
+}]
+
+[node name="Lady" instance=ExtResource("1_4xfbx")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+modulate = Color(1, 1, 1, 1)
+sprite_frames = SubResource("SpriteFrames_8nn31")

@@ -2,7 +2,8 @@ class_name MapGenerator
 extends Node
 
 const ENEMIES = [preload("res://scenes/entity/medusa.tscn"), preload("res://scenes/entity/cyclops.tscn")]
-const PERSON = preload("res://scenes/entity/person.tscn")
+const LAD = preload("res://scenes/entity/lad.tscn")
+const LADY = preload("res://scenes/entity/lady.tscn")
 
 enum Tile {
 	EMPTY,
@@ -59,7 +60,9 @@ func generate_maze() -> void:
 	_update_all_tiles()
 	_update_nav_tiles()
 	
-	_spawn_entities(PERSON, 14)
+	_spawn_entities(LAD, 7)
+	_spawn_entities(LADY, 7)
+	
 	
 	for i in range(8):
 		_spawn_entities(ENEMIES[randi_range(0, 1)], 1)
@@ -95,6 +98,11 @@ func _update_nav_tiles() -> void:
 		for x in map_size.x:
 			if _map[y][x] == Tile.EMPTY:
 				_set_bg_tilemap_tile(Vector2i(x, y), Vector2i(randi_range(1, 3), randi_range(2, 6)))
+	
+	#var starter_tile := Vector2i(map_size.x / 2 -1, map_size.y / 2 -3)
+	#for y in range(3):
+		#for x in range(3):
+			#_set_bg_tilemap_tile(Vector2i(starter_tile.x + y, starter_tile.x + x), TilesConfig.BG_BLOCKING)
 
 
 func _update_surrounding_tiles(cords: Vector2i) -> void:
@@ -236,6 +244,7 @@ func _add_start_room() -> void:
 	for y in range(5):
 		for x in range(5):
 			_map[starter_tile.y + y][starter_tile.x + x] = Tile.EMPTY
+	
 
 
 func _add_obsidian() -> void:

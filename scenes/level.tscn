@@ -174,7 +174,7 @@ blend_mode = 3
 [sub_resource type="Texture2DRD" id="Texture2DRD_2r41h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gofh"]
-radius = 128.0
+radius = 320.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gunhw"]
 radius = 48.0937
@@ -240,6 +240,7 @@ _player_2 = NodePath("../MinerTaur")
 collision_layer = 0
 collision_mask = 9
 script = ExtResource("15_gunhw")
+_avaliable_places = Array[Vector2]([Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2), Vector2(2, -1), Vector2(2, 0), Vector2(2, 1), Vector2(2, 2), Vector2(1, 2), Vector2(-1, 2), Vector2(-2, 2), Vector2(-2, 1), Vector2(-2, -1)])
 
 [node name="LightSprite" type="Sprite2D" parent="ligth/CenterLight" node_paths=PackedStringArray("li")]
 scale = Vector2(8, 8)
