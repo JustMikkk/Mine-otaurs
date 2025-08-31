@@ -42,8 +42,7 @@ void main() {
     vec2 pos=point_buffer.p[gl_GlobalInvocationID.y];
     vec2 vel=vec2(sin(gl_GlobalInvocationID.x*0.17+0.95),cos(gl_GlobalInvocationID.x*0.17+0.95))*0.03;
     int live=10;
-    int new=100;
-    for(int step=0;step<200;step++){
+    for(int step=0;step<400;step++){
         vec2 npos=pos+vel;
         ivec2 inposA=ivec2(floor(npos+vec2(0.0,-0.01)));
         ivec2 inposB=ivec2(floor(npos+vec2(0.0,+0.01)));
@@ -51,9 +50,7 @@ void main() {
         ivec2 inposD=ivec2(floor(npos+vec2(+0.01,0.0)));
         ivec2 inpos2=ivec2(floor(npos*5.0));
         //atomicAdd(ligth_buffer.data[ipos2.x*50+ipos2.y],live);
-        if(step==100){
-            new=0;
-        }
+
         if ((maze_buffer.data[inposA.x*maze_size_y+inposA.y]==1)&&
         (maze_buffer.data[inposC.x*maze_size_y+inposC.y]==1)&&
         (maze_buffer.data[inposD.x*maze_size_y+inposD.y]==1)&&
@@ -75,7 +72,14 @@ void main() {
             }
         }
         else{
-            atomicMax(ligth_buffer.data[inpos2.x*ligth_size_y+inpos2.y],live+new);
+            if(step<100){
+                atomicMax(ligth_buffer.data[inpos2.x*ligth_size_y+inpos2.y],300-step);
+
+            }
+            else{
+                atomicMax(ligth_buffer.data[inpos2.x*ligth_size_y+inpos2.y],live);
+            }
+            
             pos=npos;
         }
     }
