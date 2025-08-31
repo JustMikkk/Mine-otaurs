@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://bplvnooaqa5eg"]
+[gd_scene load_steps=102 format=3 uid="uid://bplvnooaqa5eg"]
 
 [ext_resource type="Script" uid="uid://dvcajnftfgqd1" path="res://scenes/player/player.gd" id="1_p47bc"]
 [ext_resource type="Texture2D" uid="uid://dn8hwg85ixgx7" path="res://assets/chill_guy/walk_forward/walk_forward_0001.png" id="2_ws0t6"]
@@ -100,8 +100,8 @@
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="98_i6ap2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6ap2"]
-radius = 20.0
-height = 76.0
+radius = 40.0
+height = 108.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1rx8"]
 animations = [{
@@ -425,6 +425,10 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_88c1f"]
+radius = 48.0
+height = 128.0
+
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 collision_mask = 6
 motion_mode = 1
@@ -434,6 +438,7 @@ script = ExtResource("1_p47bc")
 shape = SubResource("CapsuleShape2D_i6ap2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_t1rx8")
 autoplay = "default"
 frame_progress = 0.499414
@@ -441,3 +446,9 @@ frame_progress = 0.499414
 [node name="Marker" type="Sprite2D" parent="."]
 position = Vector2(128, 0)
 texture = ExtResource("98_i6ap2")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(96, 0)
+shape = SubResource("CapsuleShape2D_88c1f")

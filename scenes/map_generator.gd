@@ -47,6 +47,7 @@ func generate_maze() -> void:
 		
 	#_print_map()
 	_fill_with_obstacles()
+	_add_start_room()
 
 	_apply_to_tilemap()
 	_update_all_tiles()
