@@ -34,7 +34,10 @@ func _process(delta: float) -> void:
 		if power<low_power and low_power_time>0.0:
 			power=low_power
 			low_power_time-=delta
-		li.lights_int[ligth_id]=power
+		if Input.is_key_pressed(KEY_SHIFT):
+			li.lights_int[ligth_id]=min(power,40)
+		else:
+			li.lights_int[ligth_id]=power
 		#print(power)
 	if Input.is_key_pressed(KEY_U):
 		power=max_power
@@ -42,8 +45,13 @@ func _process(delta: float) -> void:
 
 
 func refill():
+	print("ref")
+	if(power<max_power/2):
+		SoundPlayer.make_sound(SoundPlayer.Sounds.FIRE)
+	#SoundPlayer.make_sound(SoundPlayer.Sounds.FIRE)
 	power=max_power
 	low_power_time=low_power_max_time
+	
 	
 
 
@@ -55,6 +63,8 @@ func refill_tween() -> void:
 	
 	_tween_refill = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC)
 	_tween_refill.tween_method(_set_power, power, max_power, 1)
+	if power<0.7*max_power:
+		SoundPlayer.make_sound(SoundPlayer.Sounds.FIRE)
 
 
 func _set_power(val: float) -> void:

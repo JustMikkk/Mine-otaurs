@@ -212,3 +212,6 @@ offset_bottom = 42.0
 grow_horizontal = 0
 pivot_offset = Vector2(196, 132)
 icon = ExtResource("11_w7sfr")
+
+[connection signal="pressed" from="Control/ResultScreen/ButtonReset" to="." method="_on_button_reset_pressed"]
+[connection signal="pressed" from="Control/ResultScreen/ButtonExit" to="." method="_on_button_exit_pressed"]
