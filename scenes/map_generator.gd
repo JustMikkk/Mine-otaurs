@@ -1,7 +1,7 @@
 class_name MapGenerator
 extends Node
 
-const ENEMY = preload("res://scenes/entity/enemy.tscn")
+const ENEMY = preload("res://scenes/entity/medusa.tscn")
 const PERSON = preload("res://scenes/entity/person.tscn")
 
 enum Tile {
@@ -16,6 +16,8 @@ enum Tile {
 var _map: Array[Array]
 var _random_bound = 1
 var _empty_tiles = 9
+
+var _entity_spawns: Array[Vector2i]
 
 @onready var _bg_tile_map: TileMapLayer = $"../../BG-TileMap"
 @onready var _walls_tile_map: TileMapLayer = $"../Walls-TileMap"
@@ -57,7 +59,9 @@ func generate_maze() -> void:
 	_update_all_tiles()
 	_update_nav_tiles()
 	
-	_spawn_entities(PERSON, 1)
+	_spawn_entities(PERSON, 4)
+	_spawn_entities(ENEMY, 9)
+	
 
 
 func mine_tile(cords: Vector2i) -> bool:
@@ -74,11 +78,14 @@ func _spawn_entities(prefab: PackedScene, amount: int) -> void:
 	var counter: int = 0
 	while counter < amount:
 		var new_pos := Vector2i(randi_range(0, map_size.x -1), randi_range(0, map_size.y -1))
-		if _is_tile_empty(new_pos.x, new_pos.y):
+		if _is_tile_empty(new_pos.x, new_pos.y) and new_pos.distance_to(map_size /2) > 6 \
+		and not new_pos in _entity_spawns:
 			var node = prefab.instantiate()
+			node.center_goal = map_size / 2 * 128
 			_light.add_child(node)
 			node.global_position = new_pos * 128 + Vector2i.ONE * 64
 			counter += 1
+			_entity_spawns.append(new_pos)
 
 
 func _update_nav_tiles() -> void:

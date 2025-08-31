@@ -347,3 +347,6 @@ sprite_frames = SubResource("SpriteFrames_oham6")
 animation = &"move_left"
 autoplay = "move_down"
 frame_progress = 0.683518
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+disabled = true

@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const MOVEMENT_SPEED = 9800.0
 
+var center_goal: Vector2i
+
 var _goal: Node2D
 
 @onready var _light: MyLigth = get_tree().get_first_node_in_group("myLight")
@@ -49,4 +51,16 @@ func _on_timer_timeout() -> void:
 		return
 	
 	_navigation_agent_2d.target_position = _goal.global_position
-	
+
+
+func _animate() -> void:
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			_animated_sprite_2d.animation = "right"
+		else:
+			_animated_sprite_2d.animation = "left"
+	else:
+		if velocity.y > 0:
+			_animated_sprite_2d.animation = "down"
+		else:
+			_animated_sprite_2d.animation = "up" 
