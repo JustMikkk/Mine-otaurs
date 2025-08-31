@@ -8,7 +8,7 @@ layout(set = 1, binding = 2, std430) restrict buffer MBuffer {
 }maze_buffer;
 
 layout(set = 1, binding = 3, std430) restrict buffer PBuffer {
-    vec2 p;
+    vec4 p[];
 }point_buffer;
 
 layout(set = 1, binding = 4, std430) restrict buffer LBuffer {

@@ -44,6 +44,7 @@ var Tsize=Vector2i(36,36)*128#Vector2i(500,500)
 var sensors=[]
 var sensors_data=[]
 var lights=[]
+var lights_int=[]
 
 func make_tab():
 	var mg=$"../Level_maker/MapGenerator"
@@ -74,9 +75,10 @@ func register_sensor(n:Node2D):
 	sensors_data.append(0)
 	return id
 
-func register_ligth(n:Node2D):
+func register_ligth(n:Node2D,intensity:float):
 	var id = lights.size()
 	lights.append(n)
+	lights_int.append(intensity)
 	return id
 	
 func get_sensor_data(id:int):
@@ -148,7 +150,7 @@ func init_gpu():
 	rd = RenderingServer.get_rendering_device()
 	var uniformI:RDUniform=init_texture(1)
 	var uniformMaze=Graphic.to_rd_int_array(rd,func_to_array(func (n):return tab[n/maze_size_y][n%maze_size_y],maze_size_y*maze_size_y),2,maze)
-	var uniformPoint=Graphic.to_rd_float_array(rd, func_to_arrayf(func (n):return 1.5,2*100),3,li_point)
+	var uniformPoint=Graphic.to_rd_float_array(rd, func_to_arrayf(func (n):return 1.5,4*100),3,li_point)
 	var uniformLi=Graphic.to_rd_int_array(rd,func_to_array(func (n):return 0.0,ligth_size_y*ligth_size_y),4)
 	var uniformInfo=Graphic.to_rd_int_array(rd,PackedInt32Array([
 		Tsize.x,
@@ -190,11 +192,15 @@ func reaload_maze():
 var lx=1.5
 var ly=1.5
 func reaload_li():
-	var a=PackedFloat32Array([lx,ly])
-	for l in lights:
-		a.append(clamp(l.global_position.x/maze_scale_down,0.0,maze_size_y-1))
-		a.append(clamp(l.global_position.y/maze_scale_down,0.0,maze_size_y-1))
-		
+	var a=PackedFloat32Array([lx,ly,50.0,0.0])
+	for lid in range(lights.size()):
+		var l=lights[lid]
+		if is_instance_valid(l):
+			a.append(clamp(l.global_position.x/maze_scale_down,0.0,maze_size_y-1))
+			a.append(clamp(l.global_position.y/maze_scale_down,0.0,maze_size_y-1))
+			a.append(lights_int[lid])
+			a.append(0.0)
+	print(a)
 	rd.buffer_update(li_point[0][0],0,4*a.size(),a.to_byte_array())
 	#print("reLOAD")
 	#print(a)

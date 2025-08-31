@@ -8,7 +8,7 @@ layout(set = 1, binding = 2, std430) restrict buffer MBuffer {
 }maze_buffer;
 
 layout(set = 1, binding = 3, std430) restrict buffer PBuffer {
-    vec2 p[];
+    vec4 p[];
 }point_buffer;
 
 layout(set = 1, binding = 4, std430) restrict buffer LBuffer {
@@ -38,11 +38,11 @@ void main() {
     int ligth_size_y=info_buffer.ligth_size_y;
     int maze_size_y=info_buffer.maze_size_y;
 
-
-    vec2 pos=point_buffer.p[gl_GlobalInvocationID.y];
+    vec4 point=point_buffer.p[gl_GlobalInvocationID.y];
+    vec2 pos=point.xy;
     vec2 vel=vec2(sin(gl_GlobalInvocationID.x*0.17+0.95),cos(gl_GlobalInvocationID.x*0.17+0.95))*0.03;
     int live=10;
-    for(int step=0;step<400;step++){
+    for(int step=0;step<min(400,int(point.z));step++){
         vec2 npos=pos+vel;
         ivec2 inposA=ivec2(floor(npos+vec2(0.0,-0.01)));
         ivec2 inposB=ivec2(floor(npos+vec2(0.0,+0.01)));
