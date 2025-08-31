@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 TilesConfig="*res://globals/TilesConfig.gd"
-GameManager="res://globals/game_manager.gd"
+GameManager="*res://globals/game_manager.gd"
+EventBus="*res://globals/event_bus.gd"
 
 [display]
 
@@ -30,6 +31,8 @@ window/stretch/mode="viewport"
 
 Players=""
 myLight=""
+UICanvas=""
+Torch=""
 
 [input]
 

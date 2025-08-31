@@ -1,7 +1,7 @@
 class_name MapGenerator
 extends Node
 
-const ENEMY = preload("res://scenes/entity/medusa.tscn")
+const ENEMIES = [preload("res://scenes/entity/medusa.tscn"), preload("res://scenes/entity/cyclops.tscn")]
 const PERSON = preload("res://scenes/entity/person.tscn")
 
 enum Tile {
@@ -60,11 +60,14 @@ func generate_maze() -> void:
 	_update_nav_tiles()
 	
 	_spawn_entities(PERSON, 14)
-	_spawn_entities(ENEMY, 6)
 	
+	for i in range(8):
+		_spawn_entities(ENEMIES[randi_range(0, 1)], 1)
 
 
 func mine_tile(cords: Vector2i) -> bool:
+	if GameManager.pick_durability <= 0: return false
+	
 	if _map[cords.y][cords.x] == Tile.WALL:
 		_map[cords.y][cords.x] = Tile.EMPTY
 		_walls_tile_map.erase_cell(cords)

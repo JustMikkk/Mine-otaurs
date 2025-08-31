@@ -343,9 +343,9 @@ _player_actions = Array[String](["left_p2", "right_p2", "up_p2", "down_p2", "act
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_oham6")
-animation = &"move_left"
+animation = &"attack_right"
 autoplay = "move_down"
-frame_progress = 0.683518
+frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 disabled = true

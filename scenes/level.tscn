@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://drtrate6txvwq"]
+[gd_scene load_steps=28 format=3 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bfcf4sa2jd587" path="res://scenes/player/miner_taur.tscn" id="13_arp2o"]
 [ext_resource type="Script" uid="uid://bydi2bv8ghvux" path="res://scenes/center_light.gd" id="15_gunhw"]
 [ext_resource type="PackedScene" uid="uid://dbdnpufgl7ky" path="res://scenes/z_index_manager.tscn" id="16_arp2o"]
+[ext_resource type="Texture2D" uid="uid://b4lcrrg3buxid" path="res://assets/anvil.png" id="16_gunhw"]
+[ext_resource type="PackedScene" uid="uid://dju1uqhflgy5j" path="res://scenes/ui/ui_canvas.tscn" id="18_82cfe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ux5qa"]
 vertices = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
@@ -174,6 +176,9 @@ blend_mode = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gofh"]
 radius = 128.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gunhw"]
+radius = 48.0937
+
 [node name="Level" type="Node2D"]
 
 [node name="BG-TileMap" type="TileMapLayer" parent="."]
@@ -231,20 +236,6 @@ script = ExtResource("8_b121j")
 _player_1 = NodePath("../MinoTorch")
 _player_2 = NodePath("../MinerTaur")
 
-[node name="MinoTorch" parent="ligth" instance=ExtResource("9_fpun6")]
-collision_mask = 6
-
-[node name="Torch" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li")]
-scale = Vector2(8, 8)
-script = ExtResource("11_64w2a")
-li = NodePath("../..")
-limited = true
-power_dec = 5.0
-
-[node name="MinerTaur" parent="ligth" instance=ExtResource("13_arp2o")]
-collision_mask = 6
-has_pickaxe = true
-
 [node name="CenterLight" type="Area2D" parent="ligth"]
 collision_layer = 0
 collision_mask = 9
@@ -260,12 +251,38 @@ max_power = 50.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ligth/CenterLight"]
 shape = SubResource("CircleShape2D_8gofh")
 
+[node name="MinoTorch" parent="ligth" instance=ExtResource("9_fpun6")]
+collision_mask = 6
+
+[node name="Torch" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li") groups=["Torch"]]
+scale = Vector2(8, 8)
+script = ExtResource("11_64w2a")
+li = NodePath("../..")
+limited = true
+power_dec = 5.0
+
+[node name="MinerTaur" parent="ligth" instance=ExtResource("13_arp2o")]
+collision_mask = 6
+has_pickaxe = true
+
+[node name="Anvil" type="Area2D" parent="ligth"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ligth/Anvil"]
+shape = SubResource("CircleShape2D_gunhw")
+
+[node name="Sprite2D" type="Sprite2D" parent="ligth/Anvil"]
+texture = ExtResource("16_gunhw")
+
 [node name="Icon" type="Sprite2D" parent="ligth"]
 modulate = Color(0.208207, 0.223416, 0.257085, 1)
 position = Vector2(3002, 2371)
 scale = Vector2(3, 3)
 texture = ExtResource("9_olg7q")
 script = ExtResource("10_t1rx8")
+
+[node name="UICanvas" parent="." instance=ExtResource("18_82cfe")]
+layer = 5
+follow_viewport_enabled = false
 
 [connection signal="body_entered" from="ligth/CenterLight" to="ligth/CenterLight" method="_on_body_entered"]
 [connection signal="body_exited" from="ligth/CenterLight" to="ligth/CenterLight" method="_on_body_exited"]

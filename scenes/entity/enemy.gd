@@ -4,9 +4,9 @@ extends Entity
 
 func take_damage() -> void:
 	_animated_sprite_2d.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
 	_animated_sprite_2d.modulate = Color.WHITE
-	await get_tree().create_timer(0.05).timeout
+	await get_tree().create_timer(0.2).timeout
 	queue_free()
 
 

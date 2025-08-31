@@ -1,7 +1,7 @@
 class_name Entity
 extends CharacterBody2D
 
-const MOVEMENT_SPEED = 12000.0
+@export var _movement_speed: float = 12000.0
 
 var is_locked_in := false
 
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not _navigation_agent_2d.is_target_reached():
 		var nav_point_direction: Vector2 = to_local(_navigation_agent_2d.get_next_path_position()).normalized()
-		velocity = nav_point_direction * MOVEMENT_SPEED * delta
+		velocity = nav_point_direction * _movement_speed * delta
 		_animate()
 		move_and_slide()
 

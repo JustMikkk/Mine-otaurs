@@ -16,11 +16,18 @@ func _ready() -> void:
 	power=max_power
 	ligth_id=li.register_ligth(self,power)
 	low_power_time = low_power_max_time
+	
+	EventBus.torch_used.connect(func():
+		power -= max_power / 4.0
+		GameManager.ui_canvas.set_torch_value(power / float(max_power))
+	)
+	
 
 func _process(delta: float) -> void:
 	if limited:
 		power-=delta*power_dec
 		power=max(power,0.0)
+		GameManager.ui_canvas.set_torch_value(power / float(max_power))
 		if power<low_power and low_power_time>0.0:
 			power=low_power
 			low_power_time-=delta
@@ -30,9 +37,11 @@ func _process(delta: float) -> void:
 		power=max_power
 		low_power_time=low_power_max_time
 
+
 func refill():
 	power=max_power
 	low_power_time=low_power_max_time
+	
 
 
 func refill_tween() -> void:

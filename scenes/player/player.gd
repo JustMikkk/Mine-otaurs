@@ -87,6 +87,11 @@ func is_frozen() -> bool:
 
 
 func _attack() -> void:
+	if has_pickaxe:
+		if GameManager.pick_durability <= 0: return
+	else:
+		if GameManager.torch.power <= 0: return
+	
 	var new_degrees: float
 	_current_state = State.ATTACKING
 	_animated_sprite_2d.speed_scale = 1
@@ -137,4 +142,9 @@ func _animate(dir: Vector2) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
+		if has_pickaxe:
+			EventBus.pick_used.emit()
+		else:
+			EventBus.torch_used.emit()
+		
 		body.take_damage()
