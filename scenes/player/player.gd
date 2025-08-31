@@ -67,6 +67,10 @@ func _physics_process(delta: float) -> void:
 		
 		State.ATTACKING:
 			if not _animated_sprite_2d.is_playing():
+				(func():
+					$Hitbox/CollisionShape2D.disabled = true
+				).call_deferred()
+				
 				_animated_sprite_2d.animation = "move_down"
 				_animated_sprite_2d.play()
 				_current_state = State.MOVING
@@ -82,6 +86,10 @@ func _attack() -> void:
 	var new_degrees: float
 	_current_state = State.ATTACKING
 	_animated_sprite_2d.speed_scale = 1
+	
+	(func():
+		$Hitbox/CollisionShape2D.disabled = false
+	).call_deferred()
 	
 	match _facing_dir:
 		Vector2i.UP:

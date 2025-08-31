@@ -1,0 +1,230 @@
+[gd_scene load_steps=51 format=3 uid="uid://cyynb6jcg1jci"]
+
+[ext_resource type="PackedScene" uid="uid://6tb78k2jcdcs" path="res://scenes/entity/enemy.tscn" id="1_cur04"]
+[ext_resource type="Texture2D" uid="uid://dtl8xxad7rlba" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0001.png" id="2_b46el"]
+[ext_resource type="Texture2D" uid="uid://tjwlks3wtfwu" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0002.png" id="3_tnsi3"]
+[ext_resource type="Texture2D" uid="uid://dacxdq8ejljjs" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0003.png" id="4_6p57v"]
+[ext_resource type="Texture2D" uid="uid://j3s3yk7utfp2" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0004.png" id="5_u6qxe"]
+[ext_resource type="Texture2D" uid="uid://dj85n0pt6165y" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0005.png" id="6_c5q1x"]
+[ext_resource type="Texture2D" uid="uid://83mih5hlgqmb" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0006.png" id="7_nntn2"]
+[ext_resource type="Texture2D" uid="uid://c7vwf8uoifug2" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0007.png" id="8_iiplx"]
+[ext_resource type="Texture2D" uid="uid://dvkju3ibbybci" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0008.png" id="9_42hls"]
+[ext_resource type="Texture2D" uid="uid://b50b5oeqxc8rw" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0009.png" id="10_2n3a7"]
+[ext_resource type="Texture2D" uid="uid://ss1llqx8nfho" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0010.png" id="11_1ouat"]
+[ext_resource type="Texture2D" uid="uid://ddx707cj5m1dq" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0011.png" id="12_eayt2"]
+[ext_resource type="Texture2D" uid="uid://b6iq7crsi4ljk" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0012.png" id="13_y2x38"]
+[ext_resource type="Texture2D" uid="uid://bko730p20qg4g" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0001.png" id="14_7w7eq"]
+[ext_resource type="Texture2D" uid="uid://p6ihn3yjeoy3" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0002.png" id="15_spdwk"]
+[ext_resource type="Texture2D" uid="uid://0b6a0g8acmj7" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0003.png" id="16_kljc4"]
+[ext_resource type="Texture2D" uid="uid://b61kylmk6plk4" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0004.png" id="17_dod37"]
+[ext_resource type="Texture2D" uid="uid://cxmynq3mf2tks" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0005.png" id="18_rd1g0"]
+[ext_resource type="Texture2D" uid="uid://c58y4sresapap" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0006.png" id="19_ouknx"]
+[ext_resource type="Texture2D" uid="uid://b2q8i23jhy1yi" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0007.png" id="20_dn22w"]
+[ext_resource type="Texture2D" uid="uid://bwn5fsahkvfaa" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0008.png" id="21_ymwst"]
+[ext_resource type="Texture2D" uid="uid://ttuvequm32op" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0009.png" id="22_w7h7j"]
+[ext_resource type="Texture2D" uid="uid://bijx8lwpqieuo" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0010.png" id="23_6qiat"]
+[ext_resource type="Texture2D" uid="uid://yhq2kxhor0ic" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0011.png" id="24_247vy"]
+[ext_resource type="Texture2D" uid="uid://cff3sxw2hg58y" path="res://assets/enemeis/medusa/walk/side_2/walk_side_2_0012.png" id="25_mx08j"]
+[ext_resource type="Texture2D" uid="uid://dedl0hgu7cgcg" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0001.png" id="26_p18u5"]
+[ext_resource type="Texture2D" uid="uid://dclyqm57dt7qg" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0002.png" id="27_8b38d"]
+[ext_resource type="Texture2D" uid="uid://oo668e7q7t75" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0003.png" id="28_ajbbt"]
+[ext_resource type="Texture2D" uid="uid://cprj1f26f87uv" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0004.png" id="29_jjqy3"]
+[ext_resource type="Texture2D" uid="uid://xsaaj5vwwxxf" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0005.png" id="30_reax4"]
+[ext_resource type="Texture2D" uid="uid://b5l5eru0ns845" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0006.png" id="31_8qocp"]
+[ext_resource type="Texture2D" uid="uid://cirf85m8s5880" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0007.png" id="32_m83fl"]
+[ext_resource type="Texture2D" uid="uid://b4mjvv2a0d6fn" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0008.png" id="33_ev7d2"]
+[ext_resource type="Texture2D" uid="uid://3psajinnfwso" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0009.png" id="34_afx0e"]
+[ext_resource type="Texture2D" uid="uid://dt24mfnkgso3c" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0010.png" id="35_apqvf"]
+[ext_resource type="Texture2D" uid="uid://brk4wtrko23fd" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0011.png" id="36_5gt54"]
+[ext_resource type="Texture2D" uid="uid://or4l8b23odim" path="res://assets/enemeis/medusa/walk/side_1/walk_side_1_0012.png" id="37_lsvvw"]
+[ext_resource type="Texture2D" uid="uid://dtgay12iq8ylc" path="res://assets/enemeis/medusa/walk/back/walk_back_0001.png" id="38_twl1c"]
+[ext_resource type="Texture2D" uid="uid://duraw4w3dkcg3" path="res://assets/enemeis/medusa/walk/back/walk_back_0002.png" id="39_5512q"]
+[ext_resource type="Texture2D" uid="uid://7teaoktkepbd" path="res://assets/enemeis/medusa/walk/back/walk_back_0003.png" id="40_ioj1x"]
+[ext_resource type="Texture2D" uid="uid://4ddacmsnr7tr" path="res://assets/enemeis/medusa/walk/back/walk_back_0004.png" id="41_iglkk"]
+[ext_resource type="Texture2D" uid="uid://c5uf18t7l7uxl" path="res://assets/enemeis/medusa/walk/back/walk_back_0005.png" id="42_epyf6"]
+[ext_resource type="Texture2D" uid="uid://bwpj4ykr47v6g" path="res://assets/enemeis/medusa/walk/back/walk_back_0006.png" id="43_oiuj2"]
+[ext_resource type="Texture2D" uid="uid://djru05x5hr18r" path="res://assets/enemeis/medusa/walk/back/walk_back_0007.png" id="44_nqkxo"]
+[ext_resource type="Texture2D" uid="uid://diptgl0yew8dx" path="res://assets/enemeis/medusa/walk/back/walk_back_0008.png" id="45_8scrt"]
+[ext_resource type="Texture2D" uid="uid://bvappmgwj33up" path="res://assets/enemeis/medusa/walk/back/walk_back_0009.png" id="46_p1g3y"]
+[ext_resource type="Texture2D" uid="uid://dagjwo4eqbjux" path="res://assets/enemeis/medusa/walk/back/walk_back_0010.png" id="47_cxegy"]
+[ext_resource type="Texture2D" uid="uid://rjb5iq0rpqbe" path="res://assets/enemeis/medusa/walk/back/walk_back_0011.png" id="48_2xq8p"]
+[ext_resource type="Texture2D" uid="uid://c11trcjv61pw8" path="res://assets/enemeis/medusa/walk/back/walk_back_0012.png" id="49_i7wv3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cur04"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b46el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tnsi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6p57v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u6qxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c5q1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nntn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iiplx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_42hls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2n3a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1ouat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eayt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_y2x38")
+}],
+"loop": true,
+"name": &"down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_7w7eq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_spdwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kljc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dod37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_rd1g0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ouknx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dn22w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ymwst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_w7h7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_6qiat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_247vy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_mx08j")
+}],
+"loop": true,
+"name": &"left",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_p18u5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_8b38d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ajbbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_jjqy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_reax4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_8qocp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_m83fl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ev7d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_afx0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_apqvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_5gt54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_lsvvw")
+}],
+"loop": true,
+"name": &"right",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_twl1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_5512q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ioj1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_iglkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_epyf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_oiuj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_nqkxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_8scrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_p1g3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_cxegy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_2xq8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_i7wv3")
+}],
+"loop": true,
+"name": &"up",
+"speed": 12.0
+}]
+
+[node name="Medusa" instance=ExtResource("1_cur04")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_cur04")
+animation = &"down"
+autoplay = "down"

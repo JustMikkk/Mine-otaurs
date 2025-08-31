@@ -378,3 +378,6 @@ sprite_frames = SubResource("SpriteFrames_rex1x")
 animation = &"move_down"
 autoplay = "move_down"
 frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+disabled = true
