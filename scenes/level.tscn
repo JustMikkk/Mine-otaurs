@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
-[ext_resource type="Script" path="res://globals/game_manager.gd" id="1_ux5qa"]
+[ext_resource type="Script" uid="uid://mlgit2p10er2" path="res://globals/game_manager.gd" id="1_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
 [ext_resource type="TileSet" uid="uid://ctrvhns6s4m8j" path="res://tilesets/walls.tres" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cmj3okni4pm7" path="res://scenes/main_camera.tscn" id="4_ppgk2"]
@@ -234,7 +234,7 @@ _player_2 = NodePath("../MinerTaur")
 [node name="MinoTorch" parent="ligth" instance=ExtResource("9_fpun6")]
 collision_mask = 6
 
-[node name="Circle3" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li")]
+[node name="Torch" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li")]
 scale = Vector2(8, 8)
 script = ExtResource("11_64w2a")
 li = NodePath("../..")
@@ -250,6 +250,7 @@ scale = Vector2(8, 8)
 texture = ExtResource("10_8iemx")
 script = ExtResource("11_64w2a")
 li = NodePath("..")
+max_power = 50.0
 
 [node name="Icon" type="Sprite2D" parent="ligth"]
 modulate = Color(0.208207, 0.223416, 0.257085, 1)
