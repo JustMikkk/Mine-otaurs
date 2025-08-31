@@ -32,6 +32,18 @@ func show_result_screen() -> void:
 	)
 
 
+func hide_result_screen() -> void:
+	if _tween_result:
+		_tween_result.kill()
+	
+	_tween_result = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	_tween_result.tween_property(_result_screen, "position:y", -800, 0.4)
+	#_tween_result.tween_callback(func():
+		#GameManager.main_camera.add_trauma(0.3)
+	#)
+
+
+
 func set_torch_value(val: float) -> void:
 	_torch_progress_bar.value = val
 
@@ -42,3 +54,13 @@ func update_pick_value() -> void:
 	
 	_tween_pickaxe = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 	_tween_pickaxe.tween_property(_pickaxe_progress_bar, "value", float(GameManager.pick_durability) / GameManager.max_pick_durability, 0.3)
+
+
+func _on_button_reset_pressed() -> void:
+	SoundPlayer.p=[]
+	GameManager.end()
+	get_tree().change_scene_to_file("res://scenes/level.tscn")
+
+
+func _on_button_exit_pressed() -> void:
+	get_tree().quit()

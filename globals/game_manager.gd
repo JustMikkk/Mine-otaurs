@@ -15,6 +15,7 @@ var frozen_players: int = 0:
 @onready var ui_canvas: UICanvas = get_tree().get_first_node_in_group("UICanvas")
 @onready var torch: TorchLigth = get_tree().get_first_node_in_group("Torch") 
 @onready var main_camera: MainCamera = get_tree().get_first_node_in_group("MainCamera")
+
 func wake_up():
 	ui_canvas = get_tree().get_first_node_in_group("UICanvas")
 	torch= get_tree().get_first_node_in_group("Torch") 
