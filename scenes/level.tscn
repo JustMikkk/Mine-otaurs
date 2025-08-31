@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/walls_tile_map.gd" id="4_t1rx8"]
 [ext_resource type="Script" uid="uid://deqr4vdkjoc3l" path="res://scenes/map_generator.gd" id="6_2r41h"]
 [ext_resource type="Script" uid="uid://chdstbgb62stv" path="res://Gf/label.gd" id="6_fpun6"]
+[ext_resource type="Script" uid="uid://b773wajpn7038" path="res://scenes/game_over.gd" id="7_gunhw"]
 [ext_resource type="Script" uid="uid://bauxuuqud2jtv" path="res://Gf/ligth.gd" id="7_klq6b"]
 [ext_resource type="Script" uid="uid://ykqaxddacfa7" path="res://Global/graphic.gd" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://bmjffm6nn0g4n" path="res://scenes/player/mino_torch.tscn" id="9_fpun6"]
@@ -205,6 +206,47 @@ zoom = Vector2(0.75, 0.75)
 _player1 = NodePath("../../ligth/MinoTorch")
 _player2 = NodePath("../../ligth/MinerTaur")
 
+[node name="GameOver" type="ColorRect" parent="Level_maker/MainCamera" node_paths=PackedStringArray("players")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -171.0
+offset_right = 196.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.22733e-06, 0.384524, 0.381793, 1)
+script = ExtResource("7_gunhw")
+players = [NodePath("../../../ligth/MinoTorch"), NodePath("../../../ligth/MinerTaur")]
+on = true
+
+[node name="Button" type="Button" parent="Level_maker/MainCamera/GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.5
+offset_top = 56.0
+offset_right = 114.5
+offset_bottom = 120.0
+grow_horizontal = 2
+text = "RESET"
+
+[node name="Label" type="Label" parent="Level_maker/MainCamera/GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "GAME OVER"
+
 [node name="Label" type="Label" parent="Level_maker/MainCamera"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,7 +265,7 @@ script = ExtResource("6_fpun6")
 
 [node name="MapGenerator" type="Node" parent="Level_maker"]
 script = ExtResource("6_2r41h")
-map_size = Vector2i(50, 50)
+map_size = Vector2i(20, 20)
 
 [node name="ligth" type="Node" parent="." node_paths=PackedStringArray("trect") groups=["myLight"]]
 script = ExtResource("7_klq6b")
@@ -254,15 +296,17 @@ shape = SubResource("CircleShape2D_8gofh")
 
 [node name="MinoTorch" parent="ligth" instance=ExtResource("9_fpun6")]
 collision_mask = 6
+players = [NodePath("."), NodePath("../MinerTaur")]
 
 [node name="Torch" type="Sprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li") groups=["Torch"]]
 scale = Vector2(8, 8)
 script = ExtResource("11_64w2a")
 li = NodePath("../..")
 limited = true
-power_dec = 5.0
+power_dec = 10.0
+register = true
 
-[node name="MinerTaur" parent="ligth" instance=ExtResource("13_arp2o")]
+[node name="MinerTaur" parent="ligth" node_paths=PackedStringArray("players") instance=ExtResource("13_arp2o")]
 collision_mask = 6
 has_pickaxe = true
 

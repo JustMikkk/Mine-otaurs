@@ -1,5 +1,6 @@
 class_name Torch
 extends Sprite2D
+class_name TorchLigth
 @export var li:MyLigth
 @export var max_power:float=200
 var power
@@ -9,6 +10,7 @@ var ligth_id
 var low_power=25.0
 var low_power_max_time=5.0
 var low_power_time=0.0
+@export var register=false
 
 var _tween_refill: Tween
 
@@ -22,6 +24,8 @@ func _ready() -> void:
 		GameManager.ui_canvas.set_torch_value(power / float(max_power))
 	)
 	
+	if register:
+		SoundPlayer.torch=self
 
 func _process(delta: float) -> void:
 	if limited:

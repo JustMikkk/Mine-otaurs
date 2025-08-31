@@ -26,5 +26,9 @@ func _ready() -> void:
 func _on_break_wall(pos: Vector2i) -> void:
 	if _map_generator.mine_tile(_walls_tile_map.local_to_map(pos)):
 		EventBus.pick_used.emit()
+		print("min")
+		SoundPlayer.make_sound(SoundPlayer.Sounds.DIG)
+	else:
+		SoundPlayer.make_sound(SoundPlayer.Sounds.SWORD)
 	
 	#_walls_tile_map.erase_cell(_walls_tile_map.local_to_map(pos))

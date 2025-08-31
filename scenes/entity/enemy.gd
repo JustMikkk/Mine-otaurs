@@ -1,6 +1,8 @@
 class_name Enemy
 extends Entity
 
+var target=null
+var time2hit=0.0
 
 func take_damage() -> void:
 	_animated_sprite_2d.modulate = Color.RED
@@ -12,4 +14,14 @@ func take_damage() -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.take_damage()
+		print("HIT")
+		target=body
+		time2hit=0.3
+		#body.take_damage()
+func _process(delta: float) -> void:
+	if target!=null:
+		time2hit-=delta
+		if time2hit<0.0:
+			print("HIT DEAL")
+			target.take_damage()
+			target=null

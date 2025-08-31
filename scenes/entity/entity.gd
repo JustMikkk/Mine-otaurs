@@ -42,9 +42,18 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	if _is_frozen or is_locked_in: return
 	
-	var closer_player_index = 1 if global_position.distance_to(_players[0].global_position) \
-	> global_position.distance_to(_players[1].global_position) else 0
-	var other_player_index = 0 if closer_player_index == 1 else 1
+	if not is_locked_in:
+		var goal_id=0
+		if global_position.distance_to(_players[0].global_position) > global_position.distance_to(_players[1].global_position):
+			_goal = _players[1]
+			goal_id = 1
+		else:
+			_goal = _players[0]
+			goal_id = 0
+		if _goal._current_state==Player.State.STUN:
+			goal_id=1-goal_id
+			_goal=_players[goal_id]
+		
 	
 	if global_position.distance_to(_players[closer_player_index].global_position) < 128 * 3 \
 	and not _players[closer_player_index].is_frozen():

@@ -7,7 +7,9 @@ enum State {
 	FROZEN,
 	MOVING,
 	ATTACKING,
+	STUN
 }
+
 
 const SPEED = 300.0
 const ACCELERATION = 0.2
@@ -15,6 +17,7 @@ const FRICTION = 0.25
 
 @export var has_pickaxe: bool = false
 @export var _player_actions: Array[String]
+@export var players:Array[Player]
 
 var _current_state: State = State.MOVING
 var _facing_dir := Vector2i.DOWN
@@ -25,11 +28,14 @@ var _facing_dir := Vector2i.DOWN
 @onready var _marker: Sprite2D = $Marker
 @onready var _hitbox: Area2D = $Hitbox
 
+
 var ligth_id
+var hp=1
 
 
 func _ready() -> void:
 	ligth_id = _light.register_sensor(self)
+	SoundPlayer.p.append(self)
 
 
 func _physics_process(delta: float) -> void:
@@ -60,7 +66,8 @@ func _physics_process(delta: float) -> void:
 				if has_pickaxe:
 					await get_tree().create_timer(0.4).timeout
 					break_wall.emit(_marker.global_position)
-			
+				else:
+					SoundPlayer.make_sound(SoundPlayer.Sounds.SWORD_FLESH)
 			move_and_slide()
 			if light <= 9:
 				GameManager.frozen_players += 1
@@ -76,12 +83,37 @@ func _physics_process(delta: float) -> void:
 				_animated_sprite_2d.animation = "move_down"
 				_animated_sprite_2d.play()
 				_current_state = State.MOVING
+		State.STUN:
+			$Stun.visible=true
+			var dist=players[0].global_position.distance_to(players[1].global_position)
+			#print(dist)
+			if dist<80.0:
+				$Stun/StunFrameBack.visible=true
+				var can_help=false
+				if players[0]._current_state==State.ATTACKING:
+					can_help=true
+				if players[1]._current_state==State.ATTACKING:
+					can_help=true
+				if can_help:
+					$Stun.visible=false
+					_animated_sprite_2d.animation = "move_down"
+					_animated_sprite_2d.play()
+					SoundPlayer.make_sound(SoundPlayer.Sounds.HEAL)
+					_current_state= State.MOVING
+					
+			else:
+				$Stun/StunFrameBack.visible=false
+			
 
 
 func take_damage() -> void:
 	_animated_sprite_2d.modulate = Color.RED
-	await get_tree().create_timer(0.05).timeout
+	await get_tree().create_timer(0.15).timeout
 	_animated_sprite_2d.modulate = Color.WHITE
+	hp-=1
+	if hp==0:
+		SoundPlayer.make_sound(SoundPlayer.Sounds.HELP)
+		_current_state=State.STUN
 
 
 func is_frozen() -> bool:

@@ -375,7 +375,7 @@ _player_actions = Array[String](["left_p1", "right_p1", "up_p1", "down_p1", "act
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rex1x")
-animation = &"move_down"
+animation = &"attack_down"
 autoplay = "move_down"
 frame_progress = 0.0
 
