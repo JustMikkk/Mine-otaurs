@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="10_t1rx8"]
 [ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="11_64w2a"]
 [ext_resource type="PackedScene" uid="uid://bfcf4sa2jd587" path="res://scenes/player/miner_taur.tscn" id="13_arp2o"]
+[ext_resource type="Script" uid="uid://byymu1qqw0lpy" path="res://scenes/torch_refill.gd" id="16_82cfe"]
 [ext_resource type="PackedScene" uid="uid://dbdnpufgl7ky" path="res://scenes/z_index_manager.tscn" id="16_arp2o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ux5qa"]
@@ -251,6 +252,10 @@ texture = ExtResource("10_8iemx")
 script = ExtResource("11_64w2a")
 li = NodePath("..")
 max_power = 50.0
+
+[node name="TorchRefill" type="Node2D" parent="ligth/CenterLight" node_paths=PackedStringArray("p")]
+script = ExtResource("16_82cfe")
+p = NodePath("../../MinoTorch")
 
 [node name="Icon" type="Sprite2D" parent="ligth"]
 modulate = Color(0.208207, 0.223416, 0.257085, 1)
