@@ -15,9 +15,17 @@ var frozen_players: int = 0:
 @onready var ui_canvas: UICanvas = get_tree().get_first_node_in_group("UICanvas")
 @onready var torch: TorchLigth = get_tree().get_first_node_in_group("Torch") 
 
+func wake_up():
+	ui_canvas = get_tree().get_first_node_in_group("UICanvas")
+	torch= get_tree().get_first_node_in_group("Torch") 
+	_ready()
 
 func _ready() -> void:
 	EventBus.pick_used.connect(func():
 		pick_durability = max(0, pick_durability -1)
 		ui_canvas.update_pick_value()
 	)
+
+func end():
+	for c in EventBus.pick_used.get_connections():
+		EventBus.pick_used.disconnect(c["callable"])

@@ -34,7 +34,10 @@ func _process(delta: float) -> void:
 		if power<low_power and low_power_time>0.0:
 			power=low_power
 			low_power_time-=delta
-		li.lights_int[ligth_id]=power
+		if Input.is_key_pressed(KEY_SHIFT):
+			li.lights_int[ligth_id]=min(power,40)
+		else:
+			li.lights_int[ligth_id]=power
 		#print(power)
 	if Input.is_key_pressed(KEY_U):
 		power=max_power
