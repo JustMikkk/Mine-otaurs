@@ -200,7 +200,7 @@ func reaload_li():
 			a.append(clamp(l.global_position.y/maze_scale_down,0.0,maze_size_y-1))
 			a.append(lights_int[lid])
 			a.append(0.0)
-	print(a)
+	#print(a)
 	rd.buffer_update(li_point[0][0],0,4*a.size(),a.to_byte_array())
 	#print("reLOAD")
 	#print(a)
