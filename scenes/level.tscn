@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="11_64w2a"]
 [ext_resource type="PackedScene" uid="uid://cqfug37a3vo5o" path="res://scenes/center_light.tscn" id="12_ux5qa"]
 [ext_resource type="PackedScene" uid="uid://bfcf4sa2jd587" path="res://scenes/player/miner_taur.tscn" id="13_arp2o"]
-[ext_resource type="Script" path="res://scenes/center_light.gd" id="15_gunhw"]
 [ext_resource type="PackedScene" uid="uid://dbdnpufgl7ky" path="res://scenes/z_index_manager.tscn" id="16_arp2o"]
 [ext_resource type="Texture2D" uid="uid://b4lcrrg3buxid" path="res://assets/anvil.png" id="16_gunhw"]
 [ext_resource type="PackedScene" uid="uid://dju1uqhflgy5j" path="res://scenes/ui/ui_canvas.tscn" id="18_82cfe"]
@@ -262,7 +261,7 @@ script = ExtResource("6_fpun6")
 
 [node name="MapGenerator" type="Node" parent="Level_maker"]
 script = ExtResource("6_2r41h")
-map_size = Vector2i(60, 60)
+map_size = Vector2i(30, 30)
 
 [node name="ligth" type="Node" parent="." node_paths=PackedStringArray("trect") groups=["myLight"]]
 script = ExtResource("7_klq6b")
