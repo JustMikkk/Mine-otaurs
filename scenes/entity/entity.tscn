@@ -443,8 +443,6 @@ path_postprocessing = 1
 avoidance_enabled = true
 radius = 64.0
 avoidance_layers = 2
-debug_enabled = true
-debug_path_custom_color = Color(1, 0, 1, 1)
 debug_path_custom_point_size = 10.0
 debug_path_custom_line_width = 5.0
 

@@ -24,6 +24,8 @@ func wake_up():
 
 
 func _ready() -> void:
+	Engine.time_scale = 0
+	
 	EventBus.pick_used.connect(func():
 		pick_durability = max(0, pick_durability -1)
 		ui_canvas.update_pick_value()

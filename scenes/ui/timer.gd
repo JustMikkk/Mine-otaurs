@@ -13,14 +13,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not _is_running: return
 	_time_elapsed += delta
-	text = _format_time(_time_elapsed)
+	text = format_time(_time_elapsed)
 
 
 func start_timer() -> void:
 	_is_running = true
 
+func stop_timer() -> void:
+	_is_running = false
 
-func _format_time(time: float) -> String:
+
+func format_time(time: float) -> String:
 	var minutes = int(time) / 60
 	var seconds = int(time) % 60
 	var milliseconds = int((time - int(time)) * 1000)
