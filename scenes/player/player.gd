@@ -109,6 +109,7 @@ func _physics_process(delta: float) -> void:
 func take_damage() -> void:
 	_animated_sprite_2d.modulate = Color.RED
 	await get_tree().create_timer(0.15).timeout
+	GameManager.main_camera.add_trauma(0.7)
 	_animated_sprite_2d.modulate = Color.WHITE
 	hp-=1
 	if hp==0:
@@ -176,7 +177,6 @@ func _animate(dir: Vector2) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
-		GameManager.main_camera.add_trauma(1)
 		if has_pickaxe:
 			EventBus.pick_used.emit()
 		else:

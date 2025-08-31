@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://kgybfreopyb0"]
+
+[ext_resource type="Texture2D" uid="uid://dcuvitq2ko3g3" path="res://assets/ui/reset.png" id="1_3xo2w"]
+[ext_resource type="Script" uid="uid://qgpuun1s3m8d" path="res://scenes/ui/button.gd" id="2_vgxan"]
+
+[node name="Button" type="Button"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = -159.0
+offset_right = 425.0
+offset_bottom = 105.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_3xo2w")
+flat = true
+script = ExtResource("2_vgxan")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

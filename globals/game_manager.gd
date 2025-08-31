@@ -8,7 +8,7 @@ var frozen_players: int = 0:
 	set(val):
 		frozen_players = val
 		if frozen_players == 2 and Time.get_ticks_msec() > 5000:
-			print("big loos")
+			ui_canvas.show_result_screen()
 
 
 @onready var pick_durability: int = max_pick_durability

@@ -1,24 +1,44 @@
-[gd_scene load_steps=12 format=3 uid="uid://dju1uqhflgy5j"]
+[gd_scene load_steps=17 format=3 uid="uid://dju1uqhflgy5j"]
 
 [ext_resource type="Script" uid="uid://d2dc4di145tyf" path="res://scenes/ui/ui_canvas.gd" id="1_iuvp6"]
-[ext_resource type="Texture2D" uid="uid://tasdjdrwrn83" path="res://assets/chill_guy/walk_forward/walk_forward_0007.png" id="1_w8rf3"]
+[ext_resource type="Texture2D" uid="uid://8qhwlsjbr64k" path="res://assets/ui/people_icon.png" id="2_t66jj"]
 [ext_resource type="Shader" uid="uid://bjaepm2n2rhr" path="res://scenes/ui/ui_canvas.gdshader" id="2_wnn5v"]
 [ext_resource type="Texture2D" uid="uid://cgujap56dfh1c" path="res://assets/ui/pickaxe.png" id="3_4y1w6"]
 [ext_resource type="Texture2D" uid="uid://cntkt4upwg4vs" path="res://assets/ui/torch.png" id="3_8e1y1"]
 [ext_resource type="LabelSettings" uid="uid://do15lxexd101" path="res://assets/fonts/label_settings.tres" id="3_hr0ke"]
 [ext_resource type="FontFile" uid="uid://clw3s15wnw1wu" path="res://assets/fonts/Erasaur-wjZ9.otf" id="6_cnd4o"]
 [ext_resource type="Script" uid="uid://645nckq7xa2c" path="res://scenes/ui/timer.gd" id="7_anacm"]
-[ext_resource type="Texture2D" uid="uid://3s1hrygkdbx2" path="res://assets/tilesets/tileset.png" id="8_wbk15"]
+[ext_resource type="Texture2D" uid="uid://cecixwwi0joq1" path="res://assets/ui/result_panel.png" id="9_wnn5v"]
+[ext_resource type="PackedScene" uid="uid://kgybfreopyb0" path="res://scenes/ui/button.tscn" id="10_w7sfr"]
+[ext_resource type="Texture2D" uid="uid://cq2287abj2u1m" path="res://assets/ui/btn_exit.png" id="11_w7sfr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_anacm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t66jj"]
+shader = ExtResource("2_wnn5v")
+shader_parameter/fisheye_strength = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wnn5v"]
 font = ExtResource("6_cnd4o")
 font_size = 48
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t66jj"]
-shader = ExtResource("2_wnn5v")
-shader_parameter/fisheye_strength = 1.0
+[sub_resource type="LabelSettings" id="LabelSettings_t66jj"]
+font = ExtResource("6_cnd4o")
+font_size = 64
+outline_size = 12
+outline_color = Color(0.513726, 0.00784314, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w7sfr"]
+font = ExtResource("6_cnd4o")
+font_size = 40
+outline_size = 12
+outline_color = Color(0.513726, 0.00784314, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f2uxn"]
+font = ExtResource("6_cnd4o")
+font_size = 40
+outline_size = 12
+outline_color = Color(0.513726, 0.00784314, 0, 1)
 
 [node name="UICanvas" type="CanvasLayer" groups=["UICanvas"]]
 follow_viewport_enabled = true
@@ -32,14 +52,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+material = SubResource("ShaderMaterial_t66jj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="RescuedCount" type="HBoxContainer" parent="Control"]
 layout_mode = 1
-offset_right = 182.0
-offset_bottom = 128.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 250.0
+offset_bottom = 143.0
 
 [node name="TextureRect" type="TextureRect" parent="Control/RescuedCount"]
 layout_mode = 2
-texture = ExtResource("1_w8rf3")
+texture = ExtResource("2_t66jj")
 
 [node name="RescuedAmount" type="Label" parent="Control/RescuedCount"]
 unique_name_in_owner = true
@@ -54,8 +87,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 128.0
+offset_left = 25.0
+offset_top = -153.0
+offset_right = 285.0
+offset_bottom = -25.0
 grow_vertical = 0
 
 [node name="PickaxeProgressBar" type="TextureProgressBar" parent="Control/Indicators"]
@@ -86,36 +121,94 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -232.0
-offset_bottom = 87.0
+offset_left = -255.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 112.0
 grow_horizontal = 0
-text = "11:11.300"
-label_settings = SubResource("LabelSettings_anacm")
+text = "00:00.000"
+label_settings = SubResource("LabelSettings_wnn5v")
 vertical_alignment = 1
 script = ExtResource("7_anacm")
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
-visible = false
+[node name="ResultScreen" type="TextureRect" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -328.0
-offset_top = -320.0
-offset_right = 696.0
-offset_bottom = 704.0
+offset_left = -240.0
+offset_top = -800.0
+offset_right = 240.0
+offset_bottom = -320.0
 grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_wbk15")
+pivot_offset = Vector2(240, 240)
+texture = ExtResource("9_wnn5v")
+expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
-material = SubResource("ShaderMaterial_t66jj")
+[node name="Label" type="Label" parent="Control/ResultScreen"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 119.0
 grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_t66jj")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/ResultScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 128.0
+offset_right = 240.0
+offset_bottom = 241.0
+grow_horizontal = 2
+text = "Everyone was
+saved 3:]"
+label_settings = SubResource("LabelSettings_w7sfr")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/ResultScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 256.0
+offset_right = 240.0
+offset_bottom = 310.0
+grow_horizontal = 2
+text = "Time: "
+label_settings = SubResource("LabelSettings_f2uxn")
+horizontal_alignment = 1
+
+[node name="ButtonReset" parent="Control/ResultScreen" instance=ExtResource("10_w7sfr")]
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -76.0
+offset_top = 255.0
+offset_right = 316.0
+offset_bottom = 519.0
+grow_vertical = 1
+pivot_offset = Vector2(196, 132)
+
+[node name="ButtonExit" parent="Control/ResultScreen" instance=ExtResource("10_w7sfr")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -314.0
+offset_top = -222.0
+offset_right = 78.0
+offset_bottom = 42.0
+grow_horizontal = 0
+pivot_offset = Vector2(196, 132)
+icon = ExtResource("11_w7sfr")

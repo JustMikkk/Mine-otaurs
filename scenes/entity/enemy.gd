@@ -7,6 +7,8 @@ var time2hit=0.0
 func take_damage() -> void:
 	_animated_sprite_2d.modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
+	GameManager.main_camera.add_trauma(0.5)
+
 	_animated_sprite_2d.modulate = Color.WHITE
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
