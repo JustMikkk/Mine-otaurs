@@ -60,7 +60,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gofh"]
-radius = 320.0
+radius = 234.307
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7wid8"]
 radius = 150.479
@@ -78,6 +78,9 @@ script = ExtResource("3_0t66e")
 max_power = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8gofh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8gofh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
