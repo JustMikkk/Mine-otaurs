@@ -34,7 +34,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var light = _light.get_sensor_data(ligth_id)
-	print("My ligth ",light)
+	#print("My ligth ",light)
 	match _current_state:
 		State.FROZEN:
 			_animated_sprite_2d.modulate=Color(0.1, 0.1, 0.1)
