@@ -35,6 +35,7 @@ var hp=2
 
 func _ready() -> void:
 	ligth_id = _light.register_sensor(self)
+	SoundPlayer.p.append(self)
 
 
 func _physics_process(delta: float) -> void:
@@ -94,7 +95,9 @@ func _physics_process(delta: float) -> void:
 					$Stun.visible=false
 					_animated_sprite_2d.animation = "move_down"
 					_animated_sprite_2d.play()
+					SoundPlayer.make_sound(SoundPlayer.Sounds.HEAL)
 					_current_state= State.MOVING
+					
 			else:
 				$Stun/StunFrameBack.visible=false
 			
@@ -106,6 +109,7 @@ func take_damage() -> void:
 	_animated_sprite_2d.modulate = Color.WHITE
 	hp-=1
 	if hp==0:
+		SoundPlayer.make_sound(SoundPlayer.Sounds.HELP)
 		_current_state=State.STUN
 
 

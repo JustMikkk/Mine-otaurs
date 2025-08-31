@@ -9,13 +9,15 @@ func take_damage() -> void:
 	await get_tree().create_timer(0.1).timeout
 	_animated_sprite_2d.modulate = Color.WHITE
 	await get_tree().create_timer(0.05).timeout
+	SoundPlayer.make_sound(SoundPlayer.Sounds.HIT)
 	queue_free()
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
+		print("HIT")
 		target=body
-		time2hit=0.5
+		time2hit=0.3
 		#body.take_damage()
 func _process(delta: float) -> void:
 	if target!=null:

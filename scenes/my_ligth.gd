@@ -1,4 +1,5 @@
 extends Sprite2D
+class_name TorchLigth
 @export var li:MyLigth
 @export var max_power:float=200
 var power
@@ -8,11 +9,14 @@ var ligth_id
 var low_power=25.0
 var low_power_max_time=5.0
 var low_power_time=0.0
+@export var register=false
 
 func _ready() -> void:
 	power=max_power
 	ligth_id=li.register_ligth(self,power)
 	low_power_time = low_power_max_time
+	if register:
+		SoundPlayer.torch=self
 
 func _process(delta: float) -> void:
 	if limited:

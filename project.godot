@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TilesConfig="*res://globals/TilesConfig.gd"
 GameManager="res://globals/game_manager.gd"
+SoundPlayer="*res://globals/SoundPlayer.gd"
 
 [display]
 
