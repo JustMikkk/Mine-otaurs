@@ -65,7 +65,8 @@ func _physics_process(delta: float) -> void:
 				if _has_pickaxe:
 					await get_tree().create_timer(0.4).timeout
 					break_wall.emit(_marker.global_position)
-			
+				else:
+					SoundPlayer.make_sound(SoundPlayer.Sounds.SWORD_FLESH)
 			move_and_slide()
 			if light <= 9:
 				_current_state=State.FROZEN

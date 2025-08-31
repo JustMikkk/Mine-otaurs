@@ -11,7 +11,8 @@ func _ready() -> void:
 	p=[]
 	music=AudioStreamPlayer.new()
 	self.add_child(music)
-	music.stream=load("res://Sounds/Prologue Theme.mp3")
+	music.stream=load("res://Sounds/free-happy-music-389297.mp3")
+	music.volume_db=-40.0
 	music.play()
 	music.connect("finished",func():
 		music.seek(0)
@@ -21,7 +22,7 @@ func _ready() -> void:
 
 	fmusic=AudioStreamPlayer.new()
 	self.add_child(fmusic)
-	fmusic.stream=load("res://Sounds/ambient_horror_track01.ogg")
+	fmusic.stream=load("res://Sounds/stuck-in-dreams-epic-inspiring-276665.mp3")
 	fmusic.play()
 	fmusic.volume_db=-40.0
 	fmusic.connect("finished",func():
@@ -29,7 +30,7 @@ func _ready() -> void:
 		fmusic.play()
 		)
 
-enum Sounds{HIT,DIG,SWORD,HELP,HEAL}
+enum Sounds{HIT,DIG,SWORD,HELP,HEAL,SWORD_FLESH}
 
 func make_sound(type:Sounds):
 	var s=AudioStreamPlayer.new()
@@ -37,7 +38,7 @@ func make_sound(type:Sounds):
 	if type==Sounds.HIT:
 		s.stream=load("res://Sounds/DAMAGE TAKEN.mp3")
 		s.volume_db=-10
-		s.pitch_scale=5
+		s.pitch_scale=1
 	if type==Sounds.DIG:
 		s.stream=load("res://Sounds/car-crash-sound-376882(1).mp3")
 		#s.volume_db=-20
@@ -49,7 +50,10 @@ func make_sound(type:Sounds):
 		s.volume_db=-5
 	if type==Sounds.SWORD:
 		s.stream=load("res://Sounds/sword-slice-2-393845.mp3")
-		s.volume_db=5
+		s.volume_db=-5
+	if type==Sounds.SWORD_FLESH:
+		s.stream=load("res://Sounds/hit-flesh-02-266309.mp3")
+		s.volume_db=-5
 	s.play()
 	s.connect("finished",func():
 		s.queue_free()
@@ -67,11 +71,11 @@ func _process(delta: float) -> void:
 	if torch:
 		if torch.power>20:
 			if is_weel:
-				music.volume_db=0.0
-				fmusic.volume_db=-60
+				music.volume_db=lerp(music.volume_db,0.0-15,delta*1.1)
+				fmusic.volume_db=lerp(fmusic.volume_db,-60.0,delta*1.1)
 			else:
-				music.volume_db=-15.0
-				fmusic.volume_db=-10.0
+				music.volume_db=lerp(music.volume_db,-5.0-15,delta*1.1)
+				fmusic.volume_db=lerp(fmusic.volume_db,-10.0,delta*1.1)
 		else:
 			music.volume_db=-100.0
 			fmusic.volume_db=-100.0
