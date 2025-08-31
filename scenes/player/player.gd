@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 			_animated_sprite_2d.modulate=Color(0.1, 0.1, 0.1)
 			
 			if light > 9:
+				GameManager.frozen_players -= 1
 				_animated_sprite_2d.modulate = Color.WHITE
 				_current_state = State.MOVING
 		
@@ -62,6 +63,7 @@ func _physics_process(delta: float) -> void:
 			
 			move_and_slide()
 			if light <= 9:
+				GameManager.frozen_players += 1
 				_current_state=State.FROZEN
 				#_animated_sprite_2d.stop()
 		

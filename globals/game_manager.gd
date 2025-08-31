@@ -3,6 +3,14 @@ extends Node
 
 var max_pick_durability: int = 4
 
+
+var frozen_players: int = 0:
+	set(val):
+		frozen_players = val
+		if frozen_players == 2 and Time.get_ticks_msec() > 5000:
+			print("big loos")
+
+
 @onready var pick_durability: int = max_pick_durability
 @onready var ui_canvas: UICanvas = get_tree().get_first_node_in_group("UICanvas")
 @onready var torch: Torch = get_tree().get_first_node_in_group("Torch") 

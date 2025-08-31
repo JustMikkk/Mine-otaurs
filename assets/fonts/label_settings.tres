@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://do15lxexd101"]
+
+[ext_resource type="FontFile" uid="uid://clw3s15wnw1wu" path="res://assets/fonts/Erasaur-wjZ9.otf" id="1_li8ak"]
+
+[resource]
+font = ExtResource("1_li8ak")
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
