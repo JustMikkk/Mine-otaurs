@@ -13,8 +13,8 @@ const SPEED = 300.0
 const ACCELERATION = 0.2
 const FRICTION = 0.25
 
+@export var has_pickaxe: bool = false
 @export var _player_actions: Array[String]
-@export var _has_pickaxe: bool = false
 
 var _current_state: State = State.MOVING
 var _facing_dir := Vector2i.DOWN
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed(_player_actions[4]):
 				_attack()
 				
-				if _has_pickaxe:
+				if has_pickaxe:
 					await get_tree().create_timer(0.4).timeout
 					break_wall.emit(_marker.global_position)
 			

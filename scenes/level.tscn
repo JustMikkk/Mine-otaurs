@@ -1,7 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
-[ext_resource type="Script" uid="uid://mlgit2p10er2" path="res://globals/game_manager.gd" id="1_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
 [ext_resource type="TileSet" uid="uid://ctrvhns6s4m8j" path="res://tilesets/walls.tres" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cmj3okni4pm7" path="res://scenes/main_camera.tscn" id="4_ppgk2"]
@@ -16,7 +15,7 @@
 [ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="10_t1rx8"]
 [ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="11_64w2a"]
 [ext_resource type="PackedScene" uid="uid://bfcf4sa2jd587" path="res://scenes/player/miner_taur.tscn" id="13_arp2o"]
-[ext_resource type="Script" uid="uid://byymu1qqw0lpy" path="res://scenes/torch_refill.gd" id="16_82cfe"]
+[ext_resource type="Script" uid="uid://bydi2bv8ghvux" path="res://scenes/center_light.gd" id="15_gunhw"]
 [ext_resource type="PackedScene" uid="uid://dbdnpufgl7ky" path="res://scenes/z_index_manager.tscn" id="16_arp2o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ux5qa"]
@@ -172,10 +171,10 @@ blend_mode = 3
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_2r41h"]
 
-[node name="Level" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gofh"]
+radius = 128.0
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_ux5qa")
+[node name="Level" type="Node2D"]
 
 [node name="BG-TileMap" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_mx8sn")
@@ -240,22 +239,26 @@ scale = Vector2(8, 8)
 script = ExtResource("11_64w2a")
 li = NodePath("../..")
 limited = true
-power_dec = 10.0
+power_dec = 5.0
 
 [node name="MinerTaur" parent="ligth" instance=ExtResource("13_arp2o")]
 collision_mask = 6
+has_pickaxe = true
 
-[node name="CenterLight" type="Sprite2D" parent="ligth" node_paths=PackedStringArray("li")]
-position = Vector2(1913, 2392)
+[node name="CenterLight" type="Area2D" parent="ligth"]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource("15_gunhw")
+
+[node name="LightSprite" type="Sprite2D" parent="ligth/CenterLight" node_paths=PackedStringArray("li")]
 scale = Vector2(8, 8)
 texture = ExtResource("10_8iemx")
 script = ExtResource("11_64w2a")
-li = NodePath("..")
+li = NodePath("../..")
 max_power = 50.0
 
-[node name="TorchRefill" type="Node2D" parent="ligth/CenterLight" node_paths=PackedStringArray("p")]
-script = ExtResource("16_82cfe")
-p = NodePath("../../MinoTorch")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ligth/CenterLight"]
+shape = SubResource("CircleShape2D_8gofh")
 
 [node name="Icon" type="Sprite2D" parent="ligth"]
 modulate = Color(0.208207, 0.223416, 0.257085, 1)
@@ -263,3 +266,6 @@ position = Vector2(3002, 2371)
 scale = Vector2(3, 3)
 texture = ExtResource("9_olg7q")
 script = ExtResource("10_t1rx8")
+
+[connection signal="body_entered" from="ligth/CenterLight" to="ligth/CenterLight" method="_on_body_entered"]
+[connection signal="body_exited" from="ligth/CenterLight" to="ligth/CenterLight" method="_on_body_exited"]

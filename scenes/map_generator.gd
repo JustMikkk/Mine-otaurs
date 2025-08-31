@@ -59,8 +59,8 @@ func generate_maze() -> void:
 	_update_all_tiles()
 	_update_nav_tiles()
 	
-	_spawn_entities(PERSON, 4)
-	_spawn_entities(ENEMY, 9)
+	_spawn_entities(PERSON, 14)
+	_spawn_entities(ENEMY, 6)
 	
 
 
@@ -81,7 +81,6 @@ func _spawn_entities(prefab: PackedScene, amount: int) -> void:
 		if _is_tile_empty(new_pos.x, new_pos.y) and new_pos.distance_to(map_size /2) > 6 \
 		and not new_pos in _entity_spawns:
 			var node = prefab.instantiate()
-			node.center_goal = map_size / 2 * 128
 			_light.add_child(node)
 			node.global_position = new_pos * 128 + Vector2i.ONE * 64
 			counter += 1

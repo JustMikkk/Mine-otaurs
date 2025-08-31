@@ -340,7 +340,6 @@ animations = [{
 
 [node name="MinerTaur" instance=ExtResource("1_oham6")]
 _player_actions = Array[String](["left_p2", "right_p2", "up_p2", "down_p2", "action_p2"])
-_has_pickaxe = true
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_oham6")

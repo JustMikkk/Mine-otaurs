@@ -434,6 +434,7 @@ shape = SubResource("CircleShape2D_1q302")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_updsx")
+animation = &"left"
 autoplay = "default"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

@@ -88,7 +88,7 @@ func upadate_sensors():
 	var t=PackedFloat32Array([])
 	sensor_count=0
 	for sid in range(sensors.size()):
-		var s:Node2D=sensors[sid]
+		var s=sensors[sid]
 		if is_instance_valid(s):
 			sensor_count+=1
 		#var posl=$"../TextureRect".to_local(s.global_position)
