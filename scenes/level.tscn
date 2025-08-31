@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqt4edu5wt2qp" path="res://icon.svg" id="9_olg7q"]
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="10_8iemx"]
 [ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="10_t1rx8"]
-[ext_resource type="Script" path="res://scenes/my_ligth.gd" id="11_64w2a"]
+[ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="11_64w2a"]
 [ext_resource type="PackedScene" uid="uid://bfcf4sa2jd587" path="res://scenes/player/miner_taur.tscn" id="13_arp2o"]
 [ext_resource type="PackedScene" uid="uid://dbdnpufgl7ky" path="res://scenes/z_index_manager.tscn" id="16_arp2o"]
 
