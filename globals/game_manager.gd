@@ -13,7 +13,7 @@ var frozen_players: int = 0:
 
 @onready var pick_durability: int = max_pick_durability
 @onready var ui_canvas: UICanvas = get_tree().get_first_node_in_group("UICanvas")
-@onready var torch: Torch = get_tree().get_first_node_in_group("Torch") 
+@onready var torch: TorchLigth = get_tree().get_first_node_in_group("Torch") 
 
 
 func _ready() -> void:

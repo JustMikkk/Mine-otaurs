@@ -1,6 +1,5 @@
-class_name Torch
-extends Sprite2D
 class_name TorchLigth
+extends Sprite2D
 @export var li:MyLigth
 @export var max_power:float=200
 var power

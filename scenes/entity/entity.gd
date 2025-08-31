@@ -9,7 +9,7 @@ var _light_id: int
 var _is_frozen := false
 
 @onready var _light: MyLigth = get_tree().get_first_node_in_group("myLight")
-@onready var _goal: Vector2 = global_position
+@onready var _goal: Node2D = self
 @onready var _players: Array = get_tree().get_nodes_in_group("Players")
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
@@ -55,18 +55,18 @@ func _on_timer_timeout() -> void:
 			_goal=_players[goal_id]
 		
 	
-	if global_position.distance_to(_players[closer_player_index].global_position) < 128 * 3 \
-	and not _players[closer_player_index].is_frozen():
-		_goal = _players[closer_player_index].global_position
-	
-	elif global_position.distance_to(_players[other_player_index].global_position) < 128 * 3 \
-	and not _players[other_player_index].is_frozen():
-		_goal = _players[other_player_index].global_position
-	
-	if _navigation_agent_2d.target_position == _goal:
+	#if global_position.distance_to(_players[closer_player_index].global_position) < 128 * 3 \
+	#and not _players[closer_player_index].is_frozen():
+		#_goal = _players[closer_player_index]
+	#
+	#elif global_position.distance_to(_players[other_player_index].global_position) < 128 * 3 \
+	#and not _players[other_player_index].is_frozen():
+		#_goal = _players[other_player_index]
+	#
+	if _navigation_agent_2d.target_position == _goal.global_position:
 		return
-	
-	_navigation_agent_2d.target_position = _goal
+	#
+	_navigation_agent_2d.target_position = _goal.global_position
 
 
 func _animate() -> void:
