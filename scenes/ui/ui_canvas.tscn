@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dju1uqhflgy5j"]
+[gd_scene load_steps=10 format=3 uid="uid://dju1uqhflgy5j"]
 
 [ext_resource type="Script" uid="uid://d2dc4di145tyf" path="res://scenes/ui/ui_canvas.gd" id="1_iuvp6"]
 [ext_resource type="Texture2D" uid="uid://tasdjdrwrn83" path="res://assets/chill_guy/walk_forward/walk_forward_0007.png" id="1_w8rf3"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://do15lxexd101" path="res://assets/fonts/label_settings.tres" id="3_hr0ke"]
 [ext_resource type="FontFile" uid="uid://clw3s15wnw1wu" path="res://assets/fonts/Erasaur-wjZ9.otf" id="6_cnd4o"]
 [ext_resource type="Script" uid="uid://645nckq7xa2c" path="res://scenes/ui/timer.gd" id="7_anacm"]
+[ext_resource type="Texture2D" uid="uid://3s1hrygkdbx2" path="res://assets/tilesets/tileset.png" id="8_wbk15"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anacm"]
 font = ExtResource("6_cnd4o")
@@ -87,3 +88,18 @@ text = "11:11.300"
 label_settings = SubResource("LabelSettings_anacm")
 vertical_alignment = 1
 script = ExtResource("7_anacm")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -320.0
+offset_right = 696.0
+offset_bottom = 704.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wbk15")

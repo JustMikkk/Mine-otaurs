@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cyynb6jcg1jci"]
+[gd_scene load_steps=52 format=3 uid="uid://cyynb6jcg1jci"]
 
 [ext_resource type="PackedScene" uid="uid://6tb78k2jcdcs" path="res://scenes/entity/enemy.tscn" id="1_cur04"]
 [ext_resource type="Texture2D" uid="uid://dtl8xxad7rlba" path="res://assets/enemeis/medusa/walk/forward/walk_forward_0001.png" id="2_b46el"]
@@ -49,6 +49,9 @@
 [ext_resource type="Texture2D" uid="uid://dagjwo4eqbjux" path="res://assets/enemeis/medusa/walk/back/walk_back_0010.png" id="47_cxegy"]
 [ext_resource type="Texture2D" uid="uid://rjb5iq0rpqbe" path="res://assets/enemeis/medusa/walk/back/walk_back_0011.png" id="48_2xq8p"]
 [ext_resource type="Texture2D" uid="uid://c11trcjv61pw8" path="res://assets/enemeis/medusa/walk/back/walk_back_0012.png" id="49_i7wv3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b46el"]
+radius = 40.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cur04"]
 animations = [{
@@ -223,6 +226,9 @@ animations = [{
 }]
 
 [node name="Medusa" instance=ExtResource("1_cur04")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_b46el")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_cur04")

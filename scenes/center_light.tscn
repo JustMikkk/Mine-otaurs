@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqfug37a3vo5o"]
+[gd_scene load_steps=18 format=3 uid="uid://cqfug37a3vo5o"]
 
 [ext_resource type="Script" uid="uid://bydi2bv8ghvux" path="res://scenes/center_light.gd" id="1_vqr5n"]
 [ext_resource type="Texture2D" uid="uid://c60gdfwnxvvw7" path="res://assets/the_light/the_light_0001.png" id="2_7wid8"]
@@ -62,6 +62,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gofh"]
 radius = 320.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wid8"]
+radius = 150.479
+
 [node name="CenterLight" type="Area2D"]
 collision_layer = 0
 collision_mask = 9
@@ -76,6 +79,11 @@ max_power = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8gofh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_7wid8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
