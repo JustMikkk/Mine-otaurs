@@ -1,8 +1,6 @@
-[gd_scene load_steps=53 format=3 uid="uid://vv8arcf5bds0"]
+[gd_scene load_steps=51 format=3 uid="uid://vv8arcf5bds0"]
 
 [ext_resource type="PackedScene" uid="uid://dpgcsckyiq3l7" path="res://scenes/entity/person.tscn" id="1_pvi0k"]
-[ext_resource type="Texture2D" uid="uid://dn8hwg85ixgx7" path="res://assets/chill_guy/walk_forward/walk_forward_0001.png" id="2_71epj"]
-[ext_resource type="Texture2D" uid="uid://1y4e1m2kpadq" path="res://assets/chill_guy/walk_forward/walk_forward_0002.png" id="3_ijyyh"]
 [ext_resource type="Texture2D" uid="uid://dtssb88atbs2b" path="res://assets/greeks/man/walk/forward/walk_forward_0001.png" id="4_xpm7n"]
 [ext_resource type="Texture2D" uid="uid://b5ovmrxfdbi7f" path="res://assets/greeks/man/walk/forward/walk_forward_0002.png" id="5_2ex0w"]
 [ext_resource type="Texture2D" uid="uid://bnhfh7voicya3" path="res://assets/greeks/man/walk/forward/walk_forward_0003.png" id="6_n500d"]
@@ -56,10 +54,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_71epj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_ijyyh")
+"texture": ExtResource("4_xpm7n")
 }],
 "loop": true,
 "name": &"default",
@@ -235,4 +230,3 @@ animations = [{
 [node name="AnimatedSprite2D" parent="." index="1"]
 modulate = Color(1, 1, 1, 1)
 sprite_frames = SubResource("SpriteFrames_c4yph")
-frame_progress = 0.0299984
