@@ -23,5 +23,6 @@ func _process(delta: float) -> void:
 	if target!=null:
 		time2hit-=delta
 		if time2hit<0.0:
+			print("HIT DEAL")
 			target.take_damage()
 			target=null

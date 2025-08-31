@@ -30,7 +30,7 @@ var _facing_dir := Vector2i.DOWN
 
 
 var ligth_id
-var hp=2
+var hp=1
 
 
 func _ready() -> void:
