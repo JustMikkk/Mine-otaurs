@@ -19,6 +19,8 @@ const FRICTION = 0.25
 var _current_state: State = State.MOVING
 var _facing_dir := Vector2i.DOWN
 
+@onready var _light: MyLigth = get_tree().get_first_node_in_group("myLight")
+
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _marker: Sprite2D = $Marker
 @onready var _hitbox: Area2D = $Hitbox
@@ -27,11 +29,11 @@ var ligth_id
 
 
 func _ready() -> void:
-	ligth_id = $"..".register_sensor(self)
+	ligth_id = _light.register_sensor(self)
 
 
 func _physics_process(delta: float) -> void:
-	var light = $"..".get_sensor_data(ligth_id)
+	var light = _light.get_sensor_data(ligth_id)
 	
 	match _current_state:
 		State.FROZEN:
@@ -65,7 +67,13 @@ func _physics_process(delta: float) -> void:
 				_animated_sprite_2d.animation = "move_down"
 				_animated_sprite_2d.play()
 				_current_state = State.MOVING
-		
+
+
+func take_damage() -> void:
+	_animated_sprite_2d.modulate = Color.RED
+	await get_tree().create_timer(0.05).timeout
+	_animated_sprite_2d.modulate = Color.WHITE
+
 
 func _attack() -> void:
 	var new_degrees: float
@@ -85,9 +93,6 @@ func _attack() -> void:
 		Vector2i.DOWN:
 			new_degrees = 90
 			_animated_sprite_2d.animation = "attack_down"
-	
-	print(_facing_dir)
-	print(_animated_sprite_2d.animation)
 		
 	_animated_sprite_2d.play()
 	_hitbox.rotation_degrees = new_degrees
@@ -113,3 +118,8 @@ func _animate(dir: Vector2) -> void:
 			_facing_dir = Vector2i.UP
 			_animated_sprite_2d.animation = "move_up" 
 		
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.take_damage()

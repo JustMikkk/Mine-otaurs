@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpgcsckyiq3l7"]
+
+[ext_resource type="PackedScene" uid="uid://ds1jirvapkx81" path="res://scenes/entity/entity.tscn" id="1_vt2kg"]
+
+[node name="Person" instance=ExtResource("1_vt2kg")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+modulate = Color(0, 1, 1, 1)

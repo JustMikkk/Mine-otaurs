@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://6tb78k2jcdcs"]
+
+[ext_resource type="PackedScene" uid="uid://ds1jirvapkx81" path="res://scenes/entity/entity.tscn" id="1_ho1e7"]
+[ext_resource type="Script" uid="uid://cx5wirpqsllsi" path="res://scenes/entity/enemy.gd" id="2_lin2w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lin2w"]
+radius = 32.0
+height = 96.0
+
+[node name="Enemy" instance=ExtResource("1_ho1e7")]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("2_lin2w")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+modulate = Color(0.958434, 0, 0.520473, 1)
+
+[node name="Hitbox" type="Area2D" parent="." index="4"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_lin2w")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

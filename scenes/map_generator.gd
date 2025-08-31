@@ -1,7 +1,8 @@
 class_name MapGenerator
 extends Node
 
-const SAVABLE_PERSON = preload("res://scenes/entity/savable_person.tscn")
+const ENEMY = preload("res://scenes/entity/enemy.tscn")
+const PERSON = preload("res://scenes/entity/person.tscn")
 
 enum Tile {
 	EMPTY,
@@ -19,6 +20,8 @@ var _empty_tiles = 9
 @onready var _bg_tile_map: TileMapLayer = $"../../BG-TileMap"
 @onready var _walls_tile_map: TileMapLayer = $"../Walls-TileMap"
 @onready var _empty_tiles_goal = map_size.x * map_size.y / 5
+@onready var _light: Node = get_tree().get_first_node_in_group("myLight")
+
 
 
 func generate_maze() -> void:
@@ -42,6 +45,7 @@ func generate_maze() -> void:
 				_fill_tiles_top_right()
 		
 		#filling_index = randi_range(0, 3)
+		print(_empty_tiles, "/", _empty_tiles_goal)
 		
 		filling_index = filling_index + 1 if filling_index + 1 != 4 else 0
 		
@@ -52,6 +56,8 @@ func generate_maze() -> void:
 	_apply_to_tilemap()
 	_update_all_tiles()
 	_update_nav_tiles()
+	
+	_spawn_entities(PERSON, 1)
 
 
 func mine_tile(cords: Vector2i) -> bool:
@@ -62,6 +68,17 @@ func mine_tile(cords: Vector2i) -> bool:
 		_update_surrounding_tiles(cords)
 		return true
 	return false
+
+
+func _spawn_entities(prefab: PackedScene, amount: int) -> void:
+	var counter: int = 0
+	while counter < amount:
+		var new_pos := Vector2i(randi_range(0, map_size.x -1), randi_range(0, map_size.y -1))
+		if _is_tile_empty(new_pos.x, new_pos.y):
+			var node = prefab.instantiate()
+			_light.add_child(node)
+			node.global_position = new_pos * 128 + Vector2i.ONE * 64
+			counter += 1
 
 
 func _update_nav_tiles() -> void:
@@ -206,9 +223,9 @@ func _is_tile_empty(x: int, y: int) -> bool:
 
 
 func _add_start_room() -> void:
-	var starter_tile := Vector2i(map_size.x / 2 -1, map_size.y / 2 -1)
-	for y in range(3):
-		for x in range(3):
+	var starter_tile := Vector2i(map_size.x / 2 -2, map_size.y / 2 -2)
+	for y in range(5):
+		for x in range(5):
 			_map[starter_tile.y + y][starter_tile.x + x] = Tile.EMPTY
 
 

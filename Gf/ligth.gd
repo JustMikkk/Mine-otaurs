@@ -51,7 +51,7 @@ func make_tab():
 	for x in range(mg._map.size()):
 		tab.append([])
 		for y in range(mg._map[0].size()):
-			tab[-1].append(1 if mg._map[y][x] !=0 else 0)
+			tab[-1].append(1 if mg._map[x][y] !=0 else 0)
 
 
 func make_tab_old():
