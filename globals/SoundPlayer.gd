@@ -30,7 +30,7 @@ func _ready() -> void:
 		fmusic.play()
 		)
 
-enum Sounds{HIT,DIG,SWORD,HELP,HEAL,SWORD_FLESH}
+enum Sounds{HIT,DIG,SWORD,HELP,HEAL,SWORD_FLESH,FIRE}
 
 func make_sound(type:Sounds):
 	var s=AudioStreamPlayer.new()
@@ -53,6 +53,9 @@ func make_sound(type:Sounds):
 		s.volume_db=-5
 	if type==Sounds.SWORD_FLESH:
 		s.stream=load("res://Sounds/hit-flesh-02-266309.mp3")
+		s.volume_db=-5
+	if type==Sounds.FIRE:
+		s.stream=load("res://Sounds/fire-onset-1-386711.mp3")
 		s.volume_db=-5
 	s.play()
 	s.connect("finished",func():

@@ -1,6 +1,9 @@
 class_name Person
 extends Entity
 
+func _enter_tree() -> void:
+	is_looking_for_someone=false
+	#$AnimationPlayer.play("celebrate")
 
 func lock_in(new_target: Vector2i) -> void:
 	is_locked_in = true
@@ -11,3 +14,9 @@ func lock_in(new_target: Vector2i) -> void:
 	
 	EventBus.person_rescued.emit()
 	$AnimationPlayer.play("celebrate")
+
+func _process(delta: float) -> void:
+	if not is_looking_for_someone:
+		for pl in SoundPlayer.p:
+			if pl.global_position.distance_to(global_position)<80.0:
+				is_looking_for_someone=true

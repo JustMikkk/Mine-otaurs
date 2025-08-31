@@ -22,6 +22,7 @@ shape = SubResource("CircleShape2D_lin2w")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+visible = false
 shape = SubResource("CapsuleShape2D_lin2w")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

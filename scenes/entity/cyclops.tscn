@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dwty6ha8t82et"]
+[gd_scene load_steps=52 format=3 uid="uid://dwty6ha8t82et"]
 
 [ext_resource type="PackedScene" uid="uid://6tb78k2jcdcs" path="res://scenes/entity/enemy.tscn" id="1_eb2yl"]
 [ext_resource type="Texture2D" uid="uid://b688bbks6ae87" path="res://assets/enemeis/cyclops/walk/forward/walk_forward_0001.png" id="2_6k238"]
@@ -49,6 +49,9 @@
 [ext_resource type="Texture2D" uid="uid://bvd838bt4u627" path="res://assets/enemeis/cyclops/walk/back/walk_back_0010.png" id="47_kgdah"]
 [ext_resource type="Texture2D" uid="uid://ehabdy1erpy4" path="res://assets/enemeis/cyclops/walk/back/walk_back_0011.png" id="48_c00g8"]
 [ext_resource type="Texture2D" uid="uid://cbuhemkefa7vk" path="res://assets/enemeis/cyclops/walk/back/walk_back_0012.png" id="49_n3ced"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eb2yl"]
+radius = 40.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5w2ja"]
 animations = [{
@@ -223,6 +226,10 @@ animations = [{
 }]
 
 [node name="Cyclops" instance=ExtResource("1_eb2yl")]
+_movement_speed = 10000.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_eb2yl")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_5w2ja")

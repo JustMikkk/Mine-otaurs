@@ -14,6 +14,7 @@ var _is_frozen := false
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
+var is_looking_for_someone=true
 
 func _ready() -> void:
 	_light_id = _light.register_sensor(self)
@@ -31,12 +32,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		_animated_sprite_2d.modulate = Color.WHITE
 		_is_frozen = false
-	
-	if not _navigation_agent_2d.is_target_reached():
-		var nav_point_direction: Vector2 = to_local(_navigation_agent_2d.get_next_path_position()).normalized()
-		velocity = nav_point_direction * _movement_speed * delta
-		_animate()
-		move_and_slide()
+		
+	if is_looking_for_someone:
+		if not _navigation_agent_2d.is_target_reached():
+			var nav_point_direction: Vector2 = to_local(_navigation_agent_2d.get_next_path_position()).normalized()
+			velocity = nav_point_direction * _movement_speed * delta
+			_animate()
+			move_and_slide()
 
 
 func _on_timer_timeout() -> void:

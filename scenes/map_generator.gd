@@ -118,7 +118,6 @@ func _update_all_tiles() -> void:
 		for x in map_size.x:
 			if _is_tile_wall(x, y):
 				_set_walls_tilemap_tile(Vector2i(x, y), TilesConfig.get_coresponding_tile(_get_surrounding_info(x, y)))
-				_set_walls_tilemap_tile
 
 
 func _get_surrounding_info(x: int, y: int) -> Array[bool]:
