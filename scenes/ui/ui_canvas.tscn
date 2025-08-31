@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cntkt4upwg4vs" path="res://assets/ui/torch.png" id="3_8e1y1"]
 [ext_resource type="LabelSettings" uid="uid://do15lxexd101" path="res://assets/fonts/label_settings.tres" id="3_hr0ke"]
 [ext_resource type="FontFile" uid="uid://clw3s15wnw1wu" path="res://assets/fonts/Erasaur-wjZ9.otf" id="6_cnd4o"]
-[ext_resource type="Script" path="res://scenes/ui/timer.gd" id="7_anacm"]
+[ext_resource type="Script" uid="uid://645nckq7xa2c" path="res://scenes/ui/timer.gd" id="7_anacm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_anacm"]
 font = ExtResource("6_cnd4o")
@@ -17,7 +17,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t66jj"]
 shader = ExtResource("2_wnn5v")
-shader_parameter/fisheye_strength = 0.1
+shader_parameter/fisheye_strength = 1.0
 
 [node name="UICanvas" type="CanvasLayer" groups=["UICanvas"]]
 follow_viewport_enabled = true
@@ -94,7 +94,6 @@ vertical_alignment = 1
 script = ExtResource("7_anacm")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-visible = false
 material = SubResource("ShaderMaterial_t66jj")
 layout_mode = 1
 anchors_preset = 15

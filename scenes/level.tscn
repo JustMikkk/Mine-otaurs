@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://drtrate6txvwq"]
+[gd_scene load_steps=27 format=3 uid="uid://drtrate6txvwq"]
 
+[ext_resource type="Script" uid="uid://dsqwnd3ov8hhp" path="res://scenes/g_mwakeup.gd" id="1_82cfe"]
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
 [ext_resource type="TileSet" uid="uid://ctrvhns6s4m8j" path="res://tilesets/walls.tres" id="3_mx8sn"]
@@ -177,6 +178,9 @@ blend_mode = 3
 radius = 48.0937
 
 [node name="Level" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("1_82cfe")
 
 [node name="BG-TileMap" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_mx8sn")
