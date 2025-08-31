@@ -9,15 +9,15 @@
 [ext_resource type="FontFile" uid="uid://clw3s15wnw1wu" path="res://assets/fonts/Erasaur-wjZ9.otf" id="6_cnd4o"]
 [ext_resource type="Script" uid="uid://645nckq7xa2c" path="res://scenes/ui/timer.gd" id="7_anacm"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t66jj"]
+shader = ExtResource("2_wnn5v")
+shader_parameter/fisheye_strength = 1.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_anacm"]
 font = ExtResource("6_cnd4o")
 font_size = 48
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t66jj"]
-shader = ExtResource("2_wnn5v")
-shader_parameter/fisheye_strength = 1.0
 
 [node name="UICanvas" type="CanvasLayer" groups=["UICanvas"]]
 follow_viewport_enabled = true
@@ -30,6 +30,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_t66jj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="RescuedCount" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -92,13 +102,3 @@ text = "11:11.300"
 label_settings = SubResource("LabelSettings_anacm")
 vertical_alignment = 1
 script = ExtResource("7_anacm")
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-material = SubResource("ShaderMaterial_t66jj")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
