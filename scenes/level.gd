@@ -27,6 +27,7 @@ func _on_break_wall(pos: Vector2i) -> void:
 	if _map_generator.mine_tile(_walls_tile_map.local_to_map(pos)):
 		EventBus.pick_used.emit()
 		SoundPlayer.make_sound(SoundPlayer.Sounds.DIG)
+		GameManager.main_camera.add_trauma(3)
 	else:
 		SoundPlayer.make_sound(SoundPlayer.Sounds.SWORD)
 	

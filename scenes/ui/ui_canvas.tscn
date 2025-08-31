@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dju1uqhflgy5j"]
+[gd_scene load_steps=12 format=3 uid="uid://dju1uqhflgy5j"]
 
 [ext_resource type="Script" uid="uid://d2dc4di145tyf" path="res://scenes/ui/ui_canvas.gd" id="1_iuvp6"]
 [ext_resource type="Texture2D" uid="uid://tasdjdrwrn83" path="res://assets/chill_guy/walk_forward/walk_forward_0007.png" id="1_w8rf3"]
+[ext_resource type="Shader" uid="uid://bjaepm2n2rhr" path="res://scenes/ui/ui_canvas.gdshader" id="2_wnn5v"]
 [ext_resource type="Texture2D" uid="uid://cgujap56dfh1c" path="res://assets/ui/pickaxe.png" id="3_4y1w6"]
 [ext_resource type="Texture2D" uid="uid://cntkt4upwg4vs" path="res://assets/ui/torch.png" id="3_8e1y1"]
 [ext_resource type="LabelSettings" uid="uid://do15lxexd101" path="res://assets/fonts/label_settings.tres" id="3_hr0ke"]
@@ -14,6 +15,10 @@ font = ExtResource("6_cnd4o")
 font_size = 48
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t66jj"]
+shader = ExtResource("2_wnn5v")
+shader_parameter/fisheye_strength = 1.0
 
 [node name="UICanvas" type="CanvasLayer" groups=["UICanvas"]]
 follow_viewport_enabled = true
@@ -90,6 +95,7 @@ vertical_alignment = 1
 script = ExtResource("7_anacm")
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -103,3 +109,13 @@ offset_bottom = 704.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_wbk15")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_t66jj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
