@@ -34,12 +34,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var light = _light.get_sensor_data(ligth_id)
-	
+	print("My ligth ",light)
 	match _current_state:
 		State.FROZEN:
 			_animated_sprite_2d.modulate=Color(0.1, 0.1, 0.1)
 			
-			if light > 8:
+			if light > 9:
 				_animated_sprite_2d.modulate = Color.WHITE
 				_current_state = State.MOVING
 		
@@ -61,6 +61,9 @@ func _physics_process(delta: float) -> void:
 					break_wall.emit(_marker.global_position)
 			
 			move_and_slide()
+			if light <= 9:
+				_current_state=State.FROZEN
+				#_animated_sprite_2d.stop()
 		
 		State.ATTACKING:
 			if not _animated_sprite_2d.is_playing():

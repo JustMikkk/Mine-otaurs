@@ -1,11 +1,11 @@
 [gd_scene load_steps=22 format=3 uid="uid://drtrate6txvwq"]
 
 [ext_resource type="Script" uid="uid://dy0vep88ow3kb" path="res://scenes/level.gd" id="1_mx8sn"]
-[ext_resource type="Script" uid="uid://mlgit2p10er2" path="res://globals/game_manager.gd" id="1_ux5qa"]
+[ext_resource type="Script" path="res://globals/game_manager.gd" id="1_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://bx7w12ai8fpkj" path="res://assets/tilesets/tileset_bg.png" id="2_ppgk2"]
 [ext_resource type="TileSet" uid="uid://ctrvhns6s4m8j" path="res://tilesets/walls.tres" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cmj3okni4pm7" path="res://scenes/main_camera.tscn" id="4_ppgk2"]
-[ext_resource type="Script" path="res://scenes/walls_tile_map.gd" id="4_t1rx8"]
+[ext_resource type="Script" uid="uid://cop3vhisnv425" path="res://scenes/walls_tile_map.gd" id="4_t1rx8"]
 [ext_resource type="Script" uid="uid://deqr4vdkjoc3l" path="res://scenes/map_generator.gd" id="6_2r41h"]
 [ext_resource type="Script" uid="uid://chdstbgb62stv" path="res://Gf/label.gd" id="6_fpun6"]
 [ext_resource type="Script" uid="uid://bauxuuqud2jtv" path="res://Gf/ligth.gd" id="7_klq6b"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqt4edu5wt2qp" path="res://icon.svg" id="9_olg7q"]
 [ext_resource type="Texture2D" uid="uid://byumxvfigd2or" path="res://assets/circle.png" id="10_8iemx"]
 [ext_resource type="Script" uid="uid://bh2xncnkefeu5" path="res://Gf/icon.gd" id="10_t1rx8"]
-[ext_resource type="Script" path="res://scenes/my_ligth.gd" id="11_64w2a"]
+[ext_resource type="Script" uid="uid://oehlnsrc3mca" path="res://scenes/my_ligth.gd" id="11_64w2a"]
 [ext_resource type="PackedScene" uid="uid://bfcf4sa2jd587" path="res://scenes/player/miner_taur.tscn" id="13_arp2o"]
 [ext_resource type="PackedScene" uid="uid://dbdnpufgl7ky" path="res://scenes/z_index_manager.tscn" id="16_arp2o"]
 
@@ -125,7 +125,6 @@ _player1 = NodePath("../../ligth/MinoTorch")
 _player2 = NodePath("../../ligth/MinerTaur")
 
 [node name="Label" type="Label" parent="Level_maker/MainCamera"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -162,6 +161,8 @@ _player_2 = NodePath("../MinerTaur")
 scale = Vector2(8, 8)
 script = ExtResource("11_64w2a")
 li = NodePath("../..")
+limited = true
+power_dec = 10.0
 
 [node name="MinerTaur" parent="ligth" instance=ExtResource("13_arp2o")]
 
