@@ -24,7 +24,8 @@ func _ready() -> void:
 	EventBus.person_rescued.connect(func():
 		_rescued_count += 1
 		_rescued_amount.text = str(_rescued_count, "/14")
-		if _rescued_count == 12:
+		print(_rescued_count)
+		if _rescued_count >= 14:
 			show_result_screen()
 	)
 
@@ -35,7 +36,7 @@ func show_result_screen() -> void:
 	if _tween_result:
 		_tween_result.kill()
 	
-	if _rescued_count == 12:
+	if _rescued_count == 14:
 		_you_win_label.text = "YOU WIN!"
 		_saved_label.text = "Everyone was \nsaved 3:]"
 	else:

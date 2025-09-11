@@ -10,4 +10,5 @@ func _process(delta: float) -> void:
 		if (players[0]._current_state in stuckState) and (players[1]._current_state in stuckState):
 			GameManager.ui_canvas.show_result_screen()
 		else:
-			GameManager.ui_canvas.hide_result_screen()
+			if GameManager.ui_canvas._rescued_count!=14:
+				GameManager.ui_canvas.hide_result_screen()
