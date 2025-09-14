@@ -28,6 +28,7 @@ func _on_pressed() -> void:
 	_tween_scale.tween_property(self, "position:y", _initial_y + 20, 0.1)
 	_tween_scale.tween_callback(func():
 		modulate = Color.WHITE
+		GameManager.main_camera.change_zoom(Vector2(0.75, 0.75))
 	)
 	_tween_scale.tween_property(self, "position:y", _initial_y, 0.1)
 	

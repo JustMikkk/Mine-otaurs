@@ -2,7 +2,12 @@ extends Area2D
 
 
 @export var _avaliable_places: Array[Vector2]
+
 var _people_count: int = 0
+var _animation_frame: int = 0
+
+@onready var _light_sprite: AnimatedSprite2D = $LightSprite
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -11,6 +16,8 @@ func _on_body_entered(body: Node2D) -> void:
 			GameManager.ui_canvas.update_pick_value()
 		else:
 			body.get_node("Torch").refill_tween()
+			await get_tree().create_timer(1).timeout
+			body.get_node("Torch").limited = false
 	
 	if body is Person:
 		if body.is_locked_in: return
@@ -32,7 +39,13 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 
-#func _on_body_exited(body: Node2D) -> void:
-	#if body is Player:
-		#if not body.has_pickaxe:
-			#body.get_node("Torch").power_dec = 10
+func _on_body_exited(body: Node2D) -> void:
+	if body is Player:
+		if not body.has_pickaxe:
+			body.get_node("Torch").limited = true
+
+
+func _on_timer_timeout() -> void:
+	_light_sprite.frame = _animation_frame
+	_animation_frame = _animation_frame + 1 if _animation_frame < 12 else 0
+	

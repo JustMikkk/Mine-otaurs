@@ -18,6 +18,7 @@ const FRICTION = 0.25
 @export var has_pickaxe: bool = false
 @export var _player_actions: Array[String]
 @export var players:Array[Player]
+@export var _torch: TorchLigth
 
 var _current_state: State = State.MOVING
 var _facing_dir := Vector2i.DOWN
@@ -99,6 +100,7 @@ func _physics_process(delta: float) -> void:
 					_animated_sprite_2d.animation = "move_down"
 					_animated_sprite_2d.play()
 					SoundPlayer.make_sound(SoundPlayer.Sounds.HEAL)
+					hp = 1
 					_current_state= State.MOVING
 					
 			else:
@@ -107,6 +109,8 @@ func _physics_process(delta: float) -> void:
 
 
 func take_damage() -> void:
+	if hp <= 0: return
+	
 	_animated_sprite_2d.modulate = Color.RED
 	await get_tree().create_timer(0.15).timeout
 	GameManager.main_camera.add_trauma(0.7)

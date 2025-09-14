@@ -72,8 +72,13 @@ script = ExtResource("1_vqr5n")
 _avaliable_places = Array[Vector2]([Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2), Vector2(2, -1), Vector2(2, 0), Vector2(2, 1), Vector2(2, 2), Vector2(1, 2), Vector2(-1, 2), Vector2(-2, 2), Vector2(-2, 1), Vector2(-2, -1)])
 
 [node name="LightSprite" type="AnimatedSprite2D" parent="."]
+light_mask = 0
+visibility_layer = 2
 sprite_frames = SubResource("SpriteFrames_n6mtv")
-autoplay = "default"
+frame_progress = 0.910131
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 0
 script = ExtResource("3_0t66e")
 max_power = 50.0
 
@@ -88,5 +93,11 @@ shape = SubResource("CircleShape2D_8gofh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_7wid8")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.083
+autostart = true
+ignore_time_scale = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

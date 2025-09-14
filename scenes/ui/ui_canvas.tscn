@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dju1uqhflgy5j"]
+[gd_scene load_steps=20 format=3 uid="uid://dju1uqhflgy5j"]
 
 [ext_resource type="Script" uid="uid://d2dc4di145tyf" path="res://scenes/ui/ui_canvas.gd" id="1_iuvp6"]
 [ext_resource type="Texture2D" uid="uid://8qhwlsjbr64k" path="res://assets/ui/people_icon.png" id="2_t66jj"]
@@ -16,7 +16,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t66jj"]
 shader = ExtResource("2_wnn5v")
-shader_parameter/fisheye_strength = 1.0
+shader_parameter/fisheye_strength = 1.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_wnn5v"]
 font = ExtResource("6_cnd4o")
@@ -41,6 +41,12 @@ font = ExtResource("6_cnd4o")
 font_size = 40
 outline_size = 12
 outline_color = Color(0.513726, 0.00784314, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aybfo"]
+font = ExtResource("6_cnd4o")
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="UICanvas" type="CanvasLayer" groups=["UICanvas"]]
 follow_viewport_enabled = true
@@ -200,6 +206,7 @@ offset_right = 316.0
 offset_bottom = 519.0
 grow_vertical = 1
 pivot_offset = Vector2(196, 132)
+focus_mode = 0
 
 [node name="ButtonExit" parent="Control/ResultScreen" instance=ExtResource("10_w7sfr")]
 layout_mode = 1
@@ -212,6 +219,7 @@ offset_right = 78.0
 offset_bottom = 42.0
 grow_horizontal = 0
 pivot_offset = Vector2(196, 132)
+focus_mode = 0
 icon = ExtResource("11_w7sfr")
 
 [node name="StartMenu" type="Control" parent="Control"]
@@ -243,6 +251,7 @@ offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(196, 132)
+focus_mode = 0
 icon = ExtResource("13_aybfo")
 
 [node name="ButtonExit" parent="Control/StartMenu" instance=ExtResource("10_w7sfr")]
@@ -256,7 +265,24 @@ offset_right = 187.0
 offset_bottom = -99.0
 grow_horizontal = 2
 pivot_offset = Vector2(196, 132)
+focus_mode = 0
 icon = ExtResource("11_w7sfr")
+
+[node name="Label" type="Label" parent="Control/StartMenu"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -52.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "by CTRL Games+"
+label_settings = SubResource("LabelSettings_aybfo")
 
 [connection signal="pressed" from="Control/ResultScreen/ButtonReset" to="." method="_on_button_reset_pressed"]
 [connection signal="pressed" from="Control/ResultScreen/ButtonExit" to="." method="_on_button_exit_pressed"]

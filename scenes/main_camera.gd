@@ -15,10 +15,8 @@ const SLOW_CAMERA_SPEED = 3
 var trauma : float = 0.0 # Current shake strength
 var trauma_power : int = 2 # Trauma exponent. Increase for more extreme shaking
 
-func _input(event: InputEvent) -> void:
-	#? Add trauma when space is pressed
-	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
-		add_trauma(0.5)
+var _tween_zoom: Tween
+
 
 func _ready() -> void:
 	#? Randomize the game seed
@@ -43,9 +41,15 @@ func _process(delta : float) -> void:
 		trauma = max(trauma - decay * delta, 0) # Decay the shake strength
 		shake() # Shake the camera
 
+func change_zoom(new_zoom: Vector2) -> void:
+	_tween_zoom = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_ignore_time_scale(true)
+	_tween_zoom.tween_property(self, "zoom", new_zoom, 0.5)
+
+
 ## The function to use for adding trauma (screen shake)
 func add_trauma(amount : float) -> void:
 	trauma = min(trauma + amount, 1.0) # Add the amount of trauma (capped at 1.0)
+
 
 ## This function is used to actually apply the shake to the camera
 func shake() -> void:

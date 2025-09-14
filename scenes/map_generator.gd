@@ -22,9 +22,8 @@ var _entity_spawns: Array[Vector2i]
 
 @onready var _bg_tile_map: TileMapLayer = $"../../BG-TileMap"
 @onready var _walls_tile_map: TileMapLayer = $"../Walls-TileMap"
-@onready var _empty_tiles_goal = map_size.x * map_size.y / 5
+@onready var _empty_tiles_goal = map_size.x * map_size.y / 4
 @onready var _light: Node = get_tree().get_first_node_in_group("myLight")
-
 
 
 func generate_maze() -> void:
@@ -52,7 +51,7 @@ func generate_maze() -> void:
 		
 		filling_index = filling_index + 1 if filling_index + 1 != 4 else 0
 		
-	#_print_map()
+	_print_map()
 	_fill_with_obstacles()
 	_add_start_room()
 
@@ -60,9 +59,10 @@ func generate_maze() -> void:
 	_update_all_tiles()
 	_update_nav_tiles()
 	
+	_add_start_room()
+	
 	_spawn_entities(LAD, 7)
 	_spawn_entities(LADY, 7)
-	
 	
 	for i in range(8):
 		_spawn_entities(ENEMIES[randi_range(0, 1)], 1)

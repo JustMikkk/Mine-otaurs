@@ -210,15 +210,14 @@ func reaload_li():
 
 
 func _process(delta: float) -> void:
-	
-	if not Engine.is_editor_hint():
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	#if not Engine.is_editor_hint():
+		#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			
 			#var p:Vector2=Vector2(get_viewport().get_mouse_position())/maze_scale_down
-			var p:Vector2=Vector2($"../TextureRect".get_local_mouse_position())/maze_scale_down
-			if tab[int(clamp(p.x,0.0,maze_size_y-1))][int(clamp(p.y,0.0,maze_size_y-1))]!=1:
-				lx=clamp(p.x,0.0,maze_size_y-1)
-				ly=clamp(p.y,0.0,maze_size_y-1)
+			#var p:Vector2=Vector2($"../TextureRect".get_local_mouse_position())/maze_scale_down
+			#if tab[int(clamp(p.x,0.0,maze_size_y-1))][int(clamp(p.y,0.0,maze_size_y-1))]!=1:
+				#lx=clamp(p.x,0.0,maze_size_y-1)
+				#ly=clamp(p.y,0.0,maze_size_y-1)
 			#print(get_viewport().get_mouse_position())
 		#lx+=delta*sin(delta)*5.0
 	reaload_li()

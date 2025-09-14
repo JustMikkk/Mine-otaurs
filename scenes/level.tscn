@@ -191,14 +191,17 @@ texture = SubResource("Texture2DRD_2r41h")
 script = ExtResource("1_mx8sn")
 
 [node name="Walls-TileMap" type="TileMapLayer" parent="Level_maker"]
-visible = false
 modulate = Color(0.446777, 0.446777, 0.446777, 1)
 tile_set = ExtResource("3_mx8sn")
 script = ExtResource("4_t1rx8")
 
 [node name="MainCamera" parent="Level_maker" node_paths=PackedStringArray("_player1", "_player2") groups=["MainCamera"] instance=ExtResource("4_ppgk2")]
-position = Vector2(2216, 1329)
-zoom = Vector2(0.75, 0.75)
+position = Vector2(1984, 2048)
+limit_left = 0
+limit_top = 0
+limit_right = 3840
+limit_bottom = 3840
+editor_draw_limits = true
 _player1 = NodePath("../../ligth/MinoTorch")
 _player2 = NodePath("../../ligth/MinerTaur")
 
@@ -249,12 +252,13 @@ _player_2 = NodePath("../MinerTaur")
 
 [node name="CenterLight" parent="ligth" instance=ExtResource("12_ux5qa")]
 
-[node name="LightSprite" parent="ligth/CenterLight" index="0" node_paths=PackedStringArray("li")]
+[node name="Sprite2D" parent="ligth/CenterLight" index="1" node_paths=PackedStringArray("li")]
 li = NodePath("../..")
 
-[node name="MinoTorch" parent="ligth" node_paths=PackedStringArray("players") instance=ExtResource("9_fpun6")]
+[node name="MinoTorch" parent="ligth" node_paths=PackedStringArray("players", "_torch") instance=ExtResource("9_fpun6")]
 collision_mask = 6
 players = [NodePath("."), NodePath("../MinerTaur")]
+_torch = NodePath("Torch")
 
 [node name="Torch" type="AnimatedSprite2D" parent="ligth/MinoTorch" node_paths=PackedStringArray("li") groups=["Torch"]]
 scale = Vector2(8, 8)
